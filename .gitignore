@@ -1,0 +1,9 @@
+<<<<<<< HEAD
+#gitignore for spa using commonJS, node, React, Ampersand
+
+=======
+>>>>>>> 78a4c0933e2333da9914a7fef844d3d0b3d53a4e
+node_modules
+public
+index.html
+npm-debug.log
