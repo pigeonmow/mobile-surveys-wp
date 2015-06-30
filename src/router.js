@@ -11,6 +11,7 @@ var MainView = require('./main-view');
 var HomePage = require('./views/home');
 var CreatePage = require('./views/create');
 var SurveyPage = require('./views/survey');
+var PreviewView = require('./components/preview');
 
 
 //define routes & route handlers by extending Router: key-value pairs: key
@@ -25,8 +26,9 @@ module.exports = Router.extend({
     if (typeof(opts)==='undefined') {
       opts = {layout: true}
     }
-    // !!!!!!!!!!!!!!!!!!! need to figure this bit out !!!!!!!!!!
-    // rename layout???
+    // if it is a layout then stick view passed in inside main-view div
+    // container
+    // ***************rename layout???***************
     if (opts.layout) {
       // redefine view
       view = (
@@ -45,7 +47,8 @@ module.exports = Router.extend({
   routes: {
     '': 'home',
     'create': 'create',
-    'survey': 'survey'
+    'survey': 'survey',
+    'preview': 'preview'
   },
 
 //create the handlers
@@ -53,6 +56,10 @@ module.exports = Router.extend({
     // layout false on this one removes the NAV using an object rather than
     // just false to improve human readability
     this.renderView(<HomePage />, {layout: false});
+  },
+  
+  preview: function () {
+    this.renderView(<PreviewView />);
   },
   
   survey: function () {
