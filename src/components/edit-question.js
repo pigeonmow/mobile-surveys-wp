@@ -6,8 +6,10 @@ module.exports = React.createClass({
   render: function () {
   
     return (
-      <h1>Edit question<h1>
-    )
+      <div>
+        <h1>Edit question</h1>
+      </div>  
+    );
   
   }
 });

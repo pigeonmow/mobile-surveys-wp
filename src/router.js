@@ -48,7 +48,10 @@ module.exports = Router.extend({
     '': 'home',
     'create': 'create',
     'survey': 'survey',
-    'preview': 'preview'
+  //  'preview': 'preview',
+    'add-question': 'add-question',
+    'edit-question': 'edit-question',
+    'add-element': 'add-element'
   },
 
 //create the handlers
@@ -58,9 +61,9 @@ module.exports = Router.extend({
     this.renderView(<HomePage />, {layout: false});
   },
   
-  preview: function () {
-    this.renderView(<PreviewView />);
-  },
+ // preview: function () {
+ //   this.renderView(<PreviewView />);
+ // },
   
   survey: function () {
     this.renderView(<SurveyPage />);

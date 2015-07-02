@@ -7,12 +7,17 @@ module.exports = React.createClass({
   //name to show in React devtools extension
   displayName: 'PreviewPage',
   
+  
+  // make preview display on RHS of create view
   render: function () {
     return (
-      <div className='container'>
+      <div className='container' id='preview-survey'>
         <header>
           <h2>Preview Your Survey</h2>
         </header>
+      <div>
+        {<p>Survey content renders here</p>}
+      </div>
       </div>
     );
   }

@@ -5,11 +5,15 @@ var Model = require('ampersand-model');
 // with ampersand - anything want to persist as a model - have to define as a property - why? - human readability
 // props: come from server & persist back to server - eg id, avatar_url
 // session: stuff to keep around in browser - eg a user token
+// derived: 
 
 module.exports = Model.extend({
   props: {
-    id: 'string',
-    questionType: 'string'
+    id: 'number',
+    questionType: 'string',
+    query: 'string',
+    instructions: 'string',
+    choices: 'object'
   },
   
   session: {
