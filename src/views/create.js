@@ -1,6 +1,6 @@
 // Create Survey View - src/views/create.js
 var React = require('react');
-var AddQuestion = require('../components/add-question');
+//var AddQuestion = require('../components/add-question');
 // React - nice to have html5 in here to see in context - trade off seperation
 // of concerns - is it seperate?? View - describes DOM interaction & stuff...
 
@@ -32,15 +32,10 @@ module.exports = React.createClass({
   
   render: function () {
     return (
-            <div className='container'>
-        <header>
-          <h1>Make a Survey!</h1>
-        </header>
-        <div>
-          <p>Please use the tools below to get started with your survey.</p>
+            <div className='grid-flex-container'>
+
           <TabsView />
           <Preview />
-        </div>
       </div>
     )
   }

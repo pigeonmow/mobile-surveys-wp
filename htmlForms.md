@@ -51,4 +51,45 @@
   </div>
   
   <!-- Drop down -->
+
+  <!-- preview.js -->
+
+  <aside className='preview-template'>
+    <form action='' method='' id=''>
+      <input type='text' name='user-name' value='Enter your username' />
+      <input type='text' name='survey-title' value='Enter the survey title' />
+      <textarea name='instructions'>
+        Enter any instructions to respondents here...
+      </textarea>
+      <div className='question-view'>
+      </div>
+      <div className='progress-bar'>
+      </div>
+      <div className='submit-button'>
+        <button type='submit' className='button button-primary'
+            onClick={}>
+            Save
+        </button>
+        <button type='submit' className='button button-primary'
+            onClick=''>
+            Publish
+        </button>
+      </div>
+      <div className='thanks-view'>
+      </div>
+    </form>
+  </aside>  
+  
+  <!-- below needs slotting in to work above the 2 columns - maybe in grid view -->
+          <header>
+          <h1>Make a Survey!</h1>
+        </header>
+          <p>Please use the tools below to get started with your survey.</p>
+
+                  <header>
+          <h2>Preview Your Survey</h2>
+        </header>
+
+  <!-- ############################################# -->
+
   
