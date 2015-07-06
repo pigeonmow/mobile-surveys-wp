@@ -6,9 +6,9 @@ module.exports = React.createClass({
   render: function () {
   
     return (
-      <div>
+      <div className='grid-flex-cell'>
         <h1>Add elements</h1>
-          <p>e.g. progress bar, breadcrumbs etc</p>
+          <p>e.g. progress bar, breadcrumbs, image etc</p>
       </div>
     );
   

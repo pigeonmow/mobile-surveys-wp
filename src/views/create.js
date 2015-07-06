@@ -7,7 +7,7 @@ var React = require('react');
 
 // ownees of this component
 var TabsView = require('./tabs');
-var Preview = require('../components/preview');
+var Preview = require('./preview');
 
 
 // **************REFACTOR********************************************

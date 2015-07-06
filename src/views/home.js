@@ -1,6 +1,6 @@
 // Home Page View - src/views/home.js
 var React = require('react');
-var LinkHelper = require('../components/link-helper');
+var LinkHelper = require('../helpers/link-helper');
 
 module.exports = React.createClass({
   //name to show in React devtools extension

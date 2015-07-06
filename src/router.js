@@ -11,7 +11,7 @@ var MainView = require('./main-view');
 var HomePage = require('./views/home');
 var CreatePage = require('./views/create');
 var SurveyPage = require('./views/survey');
-var PreviewView = require('./components/preview');
+var PreviewView = require('./views/preview');
 
 
 //define routes & route handlers by extending Router: key-value pairs: key

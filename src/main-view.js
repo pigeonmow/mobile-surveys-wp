@@ -12,7 +12,7 @@ var ampersandMixin = require('ampersand-react-mixin');
 // - this.props is anything passed in <ReactComponent /> eg <Page name="a" />
 // will get this.props.name defined as "a" inside the 'Page' component
 // children is a special case - referencing anything in {}
-var LinkHelper = require('./components/link-helper');
+var LinkHelper = require('./helpers/link-helper');
 
 module.exports = React.createClass({
   // part of react - can specify mixins - when component mounts in DOM

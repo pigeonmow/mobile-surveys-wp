@@ -1,7 +1,6 @@
 var React = require('react');
-var MultiChoice = require('./multi-choice');
-var Preview = require('./preview');
-var MultiChoice = require('./multi-choice');
+var Preview = require('../views/preview');
+var MultiChoice = require('../questions/multi-choice');
 
 module.exports = React.createClass({
   displayName: 'AddQuestion',
@@ -33,7 +32,7 @@ module.exports = React.createClass({
   render: function () {
   // need to add onClick handler
     return (
-      <div className='container'>
+      <div className='grid-flex-cell'>
         <form>
           <label htmlFor='select' className='form-element'>
             New Question

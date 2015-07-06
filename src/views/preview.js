@@ -6,38 +6,63 @@ var React = require('react');
 module.exports = React.createClass({
   //name to show in React devtools extension
   displayName: 'PreviewPage',
+  // set the initially selected option displayed when view rendered  
+  getInitialState: function () {
+    return {
+      user_name: 'Enter your user name',
+      survey_title: 'Enter the survey title',
+      instructions: 'Enter any instructions to respondents here...'
+    };
+  },
+
+// deal with changing selection
+  handleChange: function(event) {
+    this.setState({
+      value: event.target.user_name
+    });
+  },
   
-  
-  // make preview display on RHS of create view
-  // need to make this a CONTROLLED component
-  // the react textarea children thing needs to be fixed
+  // field restrictions + validations need to be added -- spell check??
+
   render: function () {
     return (
       <div className='grid-flex-cell' id='preview-survey'>
 
         <aside className='preview-template'>
           <form action='' method='' id=''>
-            <input type='text' className='form-input' name='user-name' value='Enter your username' />
-                          <button type='submit' className='button button-outlined button-small' onClick=''>
+            <input type='text' className='form-input' name='user-name' value={this.state.user_name} onChange={this.handleChange} />
+      
+              <button type='submit' className='button button-outlined button-small' onClick=''>
                   Save
               </button>
-            <input type='text' className='form-input' name='survey-title' 
-              value='Enter the survey title' />
-                            <button type='submit' className='button button-outlined button-small' onClick=''>
+      
+            <input type='text' className='form-input' name='survey-title' value={this.state.survey_title} onChange={this.handleChange} />
+      
+              <button type='submit' className='button button-outlined button-small' onClick=''>
                   Save
               </button>
-            <textarea name='instructions' className='form-input'>
-              Enter any instructions to respondents here...
-            </textarea>
-                            <button type='submit' className='button button-outlined button-small' onClick=''>
+      
+            <textarea name='instructions' className='form-input' value='Enter any instructions to respondents here...' />
+                          
+              <button type='submit' className='button button-outlined button-small' onClick=''>
                   Save
               </button>
+      
             <div className='question-view'>
+              <h2>Question</h2>
               <p>Questions render here as added - will have back/forward buttons</p>
             </div>
+      
             <div className='progress-bar'>
+              <h2>Elements</h2>
               <p>Any elements added render here - e.g. progress bar</p>
             </div>
+      
+            <div className='thanks-view'>
+              <h2>Thanks</h2>
+              <p>make sure to thank your respondents</p>
+            </div>
+      
             <div className='submit-button'>
               <button type='submit' className='button button-outlined' onClick=''>
                   Save
@@ -46,9 +71,7 @@ module.exports = React.createClass({
                   Publish
               </button>
             </div>
-            <div className='thanks-view'>
-              <p>make sure to thank your respondents</p>
-            </div>
+      
           </form>
         </aside>  
       </div>

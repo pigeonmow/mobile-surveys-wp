@@ -6,7 +6,7 @@ module.exports = React.createClass({
   render: function () {
   
     return (
-      <div>
+      <div className='grid-flex-cell'>
         <h1>Edit question</h1>
       </div>  
     );
