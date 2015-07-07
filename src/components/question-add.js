@@ -1,6 +1,7 @@
 var React = require('react');
 var Preview = require('../views/preview');
 var MultiChoice = require('../questions/multi-choice');
+// var QuestionContainer = require('./question-container');
 
 module.exports = React.createClass({
   displayName: 'AddQuestion',
@@ -21,11 +22,7 @@ module.exports = React.createClass({
   },
  //************************************************************************* 
   // Creating multiple choice question template on click of add button
-  addMultiChoice: function (event) {
-        // render multiple choice template into <div> in preview
-    console.log('I was clicked!');
-    alert('Click!');
-  },
+
                  
     // add logic so that form does not display on create page - just when
     // add question tab clicked
@@ -44,8 +41,7 @@ module.exports = React.createClass({
           </select>
           </label>
   
-          <button type='submit' className='button button-primary'
-            onClick={this.addMultiChoice}>
+          <button type='submit' className='button button-primary'>
             Add
           </button>
         </form>

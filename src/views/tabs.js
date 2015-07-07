@@ -1,13 +1,16 @@
 var React = require('react');
-var AddQuestion = require('../components/add-question');
-var EditQuestion = require('../components/edit-question');
-var AddElement = require('../components/add-element');
+var AddQuestion = require('../components/question-add');
+var EditQuestion = require('../components/question-edit');
+var AddElement = require('../components/element-add');
 var Tabs = require('../components/tab-list');
-var AddThankyou = require('../components/add-thankyou');
-var AddLogic = require('../components/add-logic');
+var AddThankyou = require('../components/thanks-add');
+var AddLogic = require('../components/logic-add');
 
+// ***************Refactor this tabList out as a model*************
+// or at least relocate it into tab-list.....
 var tabList = [
     {
+        'id' : '1',
         'name': 'Add Question',
         'url': '/create/add-question',
         'content':
@@ -16,6 +19,7 @@ var tabList = [
             </div>
     },
     {
+        'id' : '2',
         'name': 'Edit Question',
         'url': '/create/edit-question',
         'content':
@@ -24,6 +28,7 @@ var tabList = [
             </div>
     },
     {
+        'id' : '3',
         'name': 'Add Element',
         'url': '/create/add-element',
         'content':
@@ -32,6 +37,7 @@ var tabList = [
             </div>
     },
     {
+        'id' : '4',
         'name': 'Add Thank You',
         'url': '/create/add-thankyou',
         'content':
@@ -40,6 +46,7 @@ var tabList = [
             </div>
     },
     {
+        'id' : '5',
         'name': 'Add Logic',
         'url': '/create/add-logic',
         'content':

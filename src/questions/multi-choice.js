@@ -10,6 +10,7 @@ module.exports = React.createClass({
     // initially - 2 radio inputs & corresponding labels which have editable
     // placeholder text
     // need to deal with value & checked props below -------
+    // ToDo this will actually be built from a bunch of components
     return (
       <div className='multi-question'>
         <form action='' method='' id=''>

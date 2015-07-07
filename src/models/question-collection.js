@@ -4,7 +4,7 @@ var Collection = require('ampersand-rest-collection');
 var Question = require('./question');
 
 module.exports = Collection.extend({
-  url: '',
+  // : '',
   
   model: Question
-})
+});

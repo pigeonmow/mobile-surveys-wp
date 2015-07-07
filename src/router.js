@@ -10,7 +10,7 @@ var React = require('react');
 var MainView = require('./main-view');
 var HomePage = require('./views/home');
 var CreatePage = require('./views/create');
-var SurveyPage = require('./views/survey');
+// var SurveyPage = require('./views/survey');
 var PreviewView = require('./views/preview');
 
 
@@ -47,7 +47,7 @@ module.exports = Router.extend({
   routes: {
     '': 'home',
     'create': 'create',
-    'survey': 'survey',
+  //  'survey': 'survey',
   //  'preview': 'preview',
     'add-question': 'add-question',
     'edit-question': 'edit-question',
@@ -65,9 +65,9 @@ module.exports = Router.extend({
  //   this.renderView(<PreviewView />);
  // },
   
-  survey: function () {
-    this.renderView(<SurveyPage />);
-  },
+ // survey: function () {
+ //   this.renderView(<SurveyPage />);
+ // },
   
   create: function () {
     //console.log('on survey page')
