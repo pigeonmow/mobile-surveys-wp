@@ -1,6 +1,8 @@
 // A survey - the model where a complete survey saves...?
 // also currently a model for the preview...
 var Model = require('ampersand-model');
+var syncFactory = require('ampersand-sync-localstorage');
+//var AmpersandLocalStorage = require('ampersand-localstorage');
 // observable model - any property defined has a getter & setter
 // Different from Backbone model in following ways:
 // backbone - don't have to define properties initially
@@ -9,13 +11,14 @@ var Model = require('ampersand-model');
 // session: stuff to keep around in browser - eg a user token
 // derived: 
 module.exports = Model.extend({
-  
+  sync: syncFactory('survey'),
   // init runs once when new instance instantiated
   initialize: function() {
     // maybe make id username + surveynumber********
     this.id = 1
     this.username = 'Your user name'
     this.title = 'Enter a survey title'
+    this.instructions = 'Enter any user instructions here'
   },
   
   // stuff expected from server & to persist back to server
@@ -24,7 +27,8 @@ module.exports = Model.extend({
   props: {
     id: 'number',
     username: 'string',
-    title: 'string'
+    title: 'string',
+    instructions: 'string'
   },
   
     // session stays local to browser - not saved when calling model.save method
@@ -38,3 +42,4 @@ module.exports = Model.extend({
   }
   
 });
+
