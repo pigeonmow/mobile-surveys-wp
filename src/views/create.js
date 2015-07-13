@@ -35,7 +35,7 @@ module.exports = React.createClass({
     return (
             <div className='grid-flex-container'>
           <TabsView />
-          <SurveyView survey={app.survey} />
+          <SurveyView survey={this.props.survey} />
       </div>
     )
   }

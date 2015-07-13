@@ -3,25 +3,18 @@ var React = require('react');
 var User = require('../components/user');
 var ampersandMixin = require('ampersand-react-mixin');
 
-
+// emit change events here - top level component which is stateful & goes
+// down the tree
+// so this is kinda like the controller...
 module.exports = React.createClass({
   displayName: 'PreviewPage',
   mixins: [ampersandMixin],
   
-  getInitialState: function() {
-    // this is here so stateful component is at top of tree
-
-    return {
-      // this really should be accessed via this.props
-     username: 'me'
-    }
-  }, 
-  
   render: function () {
-    
+  
     return (
       <div className='grid-flex-cell' id='preview-survey'>
-          <User survey={app.survey} />      
+          <User survey={this.props.survey}  />      
       </div>
     );
   }
