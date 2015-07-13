@@ -1,6 +1,6 @@
 var React = require('react');
-var Preview = require('../views/preview');
-var MultiChoice = require('../questions/multi-choice');
+// var Preview = require('../views/preview');
+// var MultiChoice = require('../questions/multi-choice');
 // var QuestionContainer = require('./question-container');
 
 module.exports = React.createClass({

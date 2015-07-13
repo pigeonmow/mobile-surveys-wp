@@ -11,7 +11,7 @@ var MainView = require('./main-view');
 var HomePage = require('./views/home');
 var CreatePage = require('./views/create');
 // var SurveyPage = require('./views/survey');
-var PreviewView = require('./views/preview');
+
 
 
 //define routes & route handlers by extending Router: key-value pairs: key
@@ -32,12 +32,12 @@ module.exports = Router.extend({
     if (opts.layout) {
       // redefine view
       view = (
-        <MainView>
+        <MainView survey={app.survey}>
           {view}
         </MainView>
       )
     }
-    
+    // render only called once - everything else (except home) is a child component of main view
     React.render(view, document.body);
       
   },
@@ -70,7 +70,8 @@ module.exports = Router.extend({
  // },
   
   create: function () {
+
     //console.log('on survey page')
-    this.renderView(<CreatePage />);
+    this.renderView(<CreatePage survey={app.survey} />);
   }
 });

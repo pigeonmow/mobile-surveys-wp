@@ -35,7 +35,7 @@ module.exports = React.createClass({
   render () {
     return (
       // '...this.props' allows properties to be passed through, className etc
-      // (poss this is ES6??)
+      // (poss this is ES6??) - yes also jsx spread attiributes - dynamically applying props
       <div {...this.props} onClick={this.onClick}>
         {this.props.children}
       </div>

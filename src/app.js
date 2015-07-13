@@ -7,6 +7,7 @@ var styles = require('./styles/main.styl');
 //same instance of 'app' object
 var app = require('ampersand-app');
 var Router = require('./router');
+var Survey = require('./models/survey');
 
 //expose app to browser console for debugging use
 //!!!!!!!!!!!!!!!!!!!!REMOVE IN PRODUCTION CODE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -17,12 +18,19 @@ window.app = app;
 app.extend({
   
   init: function () {
-    this.router = new Router();
-    
-//tell app to start tracking urls since can create multiple routers, 'history'
-//is a singleton that all routers reference, so when start is called browser
-//reads url & calls appropriate handler in router
+    // create a new survey model & attach to app object
+    // not entirely sure if I need to do this*******
+    this.survey = new Survey();
+    // fetch initial survey template data
+    // also not sure i need this here
+    //this.survey.fetch();
+    // start up the router
+    this.router = new Router();  
+    //tell app to start tracking urls since can create multiple routers, 'history'
+    //is a singleton that all routers reference, so when start is called browser
+    //reads url & calls appropriate handler in router
     this.router.history.start();
+    console.log(this.props);
   }
 });
 

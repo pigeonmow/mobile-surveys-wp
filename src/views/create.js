@@ -7,7 +7,7 @@ var React = require('react');
 
 // ownees of this component
 var TabsView = require('./tabs');
-var Preview = require('./preview');
+var SurveyView = require('./survey-view');
 
 
 // **************REFACTOR********************************************
@@ -35,7 +35,7 @@ module.exports = React.createClass({
             <div className='grid-flex-container'>
 
           <TabsView />
-          <Preview />
+          <SurveyView />
       </div>
     )
   }
