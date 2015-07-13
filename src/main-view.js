@@ -41,9 +41,6 @@ module.exports = React.createClass({
             <li className='pull-right'><a href='/'>Logout</a></li>
           </ul>
         </nav>
-        <div>
-      {this.props.survey.username}
-        </div>
         <div className='container'>
           {this.props.children}
         </div>

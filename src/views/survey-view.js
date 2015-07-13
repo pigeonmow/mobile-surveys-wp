@@ -13,7 +13,7 @@ module.exports = React.createClass({
 
     return {
       // this really should be accessed via this.props
-     // username: survey.username
+     username: 'me'
     }
   }, 
   
@@ -21,7 +21,7 @@ module.exports = React.createClass({
     
     return (
       <div className='grid-flex-cell' id='preview-survey'>
-          <User username={this.state.username} />      
+          <User survey={app.survey} />      
       </div>
     );
   }

@@ -12,7 +12,9 @@ module.exports = Model.extend({
   
   // init runs once when new instance instantiated
   initialize: function() {
+    this.id = 1
     this.username = 'Your user name'
+    this.title = 'Enter a survey title'
   },
   
   // stuff expected from server & to persist back to server

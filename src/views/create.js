@@ -8,7 +8,7 @@ var React = require('react');
 // ownees of this component
 var TabsView = require('./tabs');
 var SurveyView = require('./survey-view');
-
+var ampersandMixin = require('ampersand-react-mixin');
 
 // **************REFACTOR********************************************
 //var tabList = require('');
@@ -29,13 +29,13 @@ var SurveyView = require('./survey-view');
 module.exports = React.createClass({
   //name to show in React devtools extension
   displayName: 'CreatePage',
+  mixins: [ampersandMixin],
   
   render: function () {
     return (
             <div className='grid-flex-container'>
-
           <TabsView />
-          <SurveyView />
+          <SurveyView survey={app.survey} />
       </div>
     )
   }
