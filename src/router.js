@@ -72,6 +72,6 @@ module.exports = Router.extend({
   create: function () {
 
     //console.log('on survey page')
-    this.renderView(<CreatePage survey={app.survey} />);
+    this.renderView(<CreatePage survey={app.survey} question={app.question} />);
   }
 });

@@ -1,13 +1,9 @@
 var React = require('react');
-// var Preview = require('../views/preview');
-// var MultiChoice = require('../questions/multi-choice');
-// var QuestionContainer = require('./question-container');
+
+
 
 module.exports = React.createClass({
-  displayName: 'AddQuestion',
- // this is  a controlled input react form
-  
-// set the initially selected option displayed when view rendered  
+  displayName: 'SurveyNav',
   getInitialState: function () {
     return {
       value: 'multi'
@@ -20,16 +16,8 @@ module.exports = React.createClass({
       value: event.target.value
     });
   },
- //************************************************************************* 
-  // Creating multiple choice question template on click of add button
-
-                 
-    // add logic so that form does not display on create page - just when
-    // add question tab clicked
   render: function () {
-  // need to add onClick handler
     return (
-      <div className='grid-flex-cell'>
         <form>
           <label htmlFor='select' className='form-element'>
             New Question
@@ -45,8 +33,6 @@ module.exports = React.createClass({
             Add
           </button>
         </form>
-      </div> 
-    );  
+    );
   }
 });
-

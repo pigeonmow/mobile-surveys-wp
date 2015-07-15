@@ -8,7 +8,7 @@ var styles = require('./styles/main.styl');
 var app = require('ampersand-app');
 var Router = require('./router');
 var Survey = require('./models/survey');
-
+var Question = require('./models/question');
 //expose app to browser console for debugging use
 //!!!!!!!!!!!!!!!!!!!!REMOVE IN PRODUCTION CODE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 window.app = app;
@@ -21,9 +21,8 @@ app.extend({
     // create a new survey model & attach to app object
     // not entirely sure if I need to do this*******
     this.survey = new Survey();
-    // fetch initial survey template data
-    // also not sure i need this here
-    //this.survey.fetch();
+// temporarily create new question here
+    this.question = new Question();
     // start up the router
     this.router = new Router();  
     //tell app to start tracking urls since can create multiple routers, 'history'

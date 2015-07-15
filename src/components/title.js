@@ -8,20 +8,20 @@ module.exports = React.createClass({
       // edit method
   onEditClick: function(event) {
     event.preventDefault();
-    this.props.survey.editing = true;
+    this.props.survey.editTitle = true;
   },
 
   // cancel method
   onCancelClick: function(event) {
     event.preventDefault();
-    this.props.survey.editing = false;
+    this.props.survey.editTitle = false;
     this.setState(this.getInitialState());
   },
     
   onSubmit: function(event) {
     event.preventDefault();
     this.props.survey.save(this.state);
-    this.props.survey.editing = false;
+    this.props.survey.editTitle = false;
   },
   
   getInitialState: function() {
@@ -41,7 +41,7 @@ module.exports = React.createClass({
     var content;
     
     // branching of render method set up - assigning to content var
-    if (this.props.survey.editing === true) {
+    if (this.props.survey.editTitle === true) {
       // Edit mode
       content = (
         <div>

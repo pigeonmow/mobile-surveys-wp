@@ -10,6 +10,7 @@ var syncFactory = require('ampersand-sync-localstorage');
 // props: come from server & persist back to server - eg id, avatar_url
 // session: stuff to keep around in browser - eg a user token
 // derived: 
+var QuestionCollection = require('./question-collection');
 module.exports = Model.extend({
   sync: syncFactory('survey'),
   // init runs once when new instance instantiated
@@ -34,11 +35,33 @@ module.exports = Model.extend({
     // session stays local to browser - not saved when calling model.save method
   session: {
     
-    editing: {
+/*    editing: {
       type: 'boolean',
-      default: false
-    }
+      default: true     
+    },*/
     
+    editUser: {
+      type: 'boolean',
+      default: true
+    },
+    
+    editTitle: {
+      type: 'boolean',
+      default: true     
+    },
+    
+    editInstructions: {
+      type: 'boolean',
+      default: true     
+    },
+    
+    
+  },
+  
+  // instantiating new question collection for this survey
+  // this collection will always be created when the model is created - 
+  collections: {
+    questions: QuestionCollection
   }
   
 });

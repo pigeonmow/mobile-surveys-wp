@@ -18,7 +18,10 @@ module.exports = React.createClass({
         <div>
           <p>Welcome, here you can create Surveys!</p>
           <a href='/create' className='button button-outlined'>
-            Create Survey
+            Create New Survey
+          </a>
+          <a href='' className='button button-outlined'>
+            Continue Editing Saved Survey
           </a>
         </div>
       </LinkHelper>

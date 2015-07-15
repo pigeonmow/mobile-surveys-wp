@@ -10,13 +10,13 @@ module.exports = React.createClass({
   onEditClick: function(event) {
     event.preventDefault();
     // alert('click edit you did!');
-    this.props.survey.editing = true;
+    this.props.survey.editUser = true;
   },
 
   // cancel method
   onCancelClick: function(event) {
     event.preventDefault();
-    this.props.survey.editing = false;
+    this.props.survey.editUser = false;
     this.setState(this.getInitialState());
   },
     
@@ -29,14 +29,14 @@ module.exports = React.createClass({
   onSubmit: function(event) {
     event.preventDefault();
     this.props.survey.save(this.state);
-    this.props.survey.editing = false;
+    this.props.survey.editUser = false;
   },
   // initial state - MOVE UP  TO HIGHR COMPONENT & PASS DOWN!!!!!!*****************
  
     getInitialState: function() {
-    return {
-      username: this.props.survey.username
-    }
+      return {
+        username: this.props.survey.username
+      }
   },
   // onChange handler - getting the event
   onUsernameChange: function(event) {
@@ -54,7 +54,7 @@ module.exports = React.createClass({
     var content;
     
     // branching of render method set up - assigning to content var
-    if (this.props.survey.editing === true) {
+    if (this.props.survey.editUser === true) {
       // Edit mode
       content = (
         <div>
