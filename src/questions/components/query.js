@@ -44,11 +44,11 @@ module.exports = React.createClass({
       content = (
         <form onSubmit={this.onSubmit}>
           <fieldset>
-            <input type='text' name='query' value={this.state.query} onChange={this.onQueryChange} className='form-input'/>
-            <button type='submit' className='button button-outlined button-small'>
+            <input type='text' name='query' value={this.state.query} onChange={this.onQueryChange} />
+            <button type='submit'>
               Save
             </button>
-            <button onClick={this.onCancelClick} type='button' className='button button-outlined button-small'>
+            <button onClick={this.onCancelClick} type='button'>
               Cancel
             </button>
           </fieldset>
@@ -59,7 +59,7 @@ module.exports = React.createClass({
         <div>
           <span>{this.props.question.query}</span>
           <span>
-            <button onClick={this.onEditClick} type='button' className='button button-outlined button-small'>
+            <button onClick={this.onEditClick} type='button'>
               Edit
             </button>
           </span>

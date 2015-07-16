@@ -15,8 +15,6 @@ module.exports = Model.extend({
   sync: syncFactory('survey'),
   // init runs once when new instance instantiated
   initialize: function() {
-    // maybe make id username + surveynumber********
-    this.id = 1
     this.username = 'Your user name'
     this.title = 'Enter a survey title'
     this.instructions = 'Enter any user instructions here'
@@ -26,7 +24,6 @@ module.exports = Model.extend({
   // the model then creates a getter & setter for each prop & 
   // they are observable - model broadcasts events
   props: {
-    id: 'number',
     username: 'string',
     title: 'string',
     instructions: 'string'
@@ -34,11 +31,6 @@ module.exports = Model.extend({
   
     // session stays local to browser - not saved when calling model.save method
   session: {
-    
-/*    editing: {
-      type: 'boolean',
-      default: true     
-    },*/
     
     editUser: {
       type: 'boolean',

@@ -12,7 +12,6 @@ module.exports = Model.extend({
   sync: syncFactory('multi-choice'),
   
   initialize: function() {
-    // this.id = 0
     this.questionType = 'Multiple Choice'
     this.query = 'Enter question here'
     this.info = 'Enter question information'
@@ -21,7 +20,6 @@ module.exports = Model.extend({
   },
   
   props: {
-    id: 'number',
     questionType: 'string',
     query: 'string',
     info: 'string',
@@ -30,11 +28,6 @@ module.exports = Model.extend({
   },
   
   session: {
-        
-/*    editChoice: {
-      type: 'boolean',
-      default: true
-    },*/
     
     editQuery: {
       type: 'boolean',

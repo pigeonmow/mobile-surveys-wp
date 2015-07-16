@@ -12,6 +12,25 @@ var ampersandMixin = require('ampersand-react-mixin');
 module.exports = React.createClass({
   displayName: 'PreviewPage',
   mixins: [ampersandMixin],
+  
+    getInitialState: function () {
+    return {
+      value: 'multi'
+    }
+  },
+
+// deal with changing selection
+  handleChange: function(event) {
+    this.setState({
+      value: event.target.value
+    });
+  },
+  
+  //Add question button handler
+  onAddClick: function(event) {
+    alert('Adding...');
+    
+  },
    
   render: function () {
   
@@ -22,18 +41,34 @@ module.exports = React.createClass({
           <Title survey={this.props.survey} />
           <Instructions survey={this.props.survey} />
           <QuestionSlider question={this.props.question} />
-          <span className='pull-right'>
-            <button type='button' className='button'>
+
+        <form>
+          <label htmlFor='select'>
+            New Question
+          <select name='new-question' value={this.state.value}
+            onChange={this.handleChange}>
+            <option value='multi'>Multiple Choice</option>
+            <option value='drop'>Drop Down</option>
+            <option value='text'>Text Box</option>
+          </select>
+          </label>
+          <button type='button' onClick={this.onAddClick}>
+            Add
+          </button>
+        </form>
+      
+                <span className='pull-right'>
+            <button type='button'>
               Save Survey
             </button>
           </span>
           <span className='pull-right'>
-            <button type='button' className='button'>
+            <button type='button'>
               Reset Survey
             </button>
           </span>
           <span className='pull-right'>
-            <button type='button' className='button'>
+            <button type='button'>
               Publish Survey
             </button>
           </span>

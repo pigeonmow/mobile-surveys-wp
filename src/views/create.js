@@ -6,7 +6,7 @@ var React = require('react');
 
 
 // ownees of this component
-var SurveyNav = require('./survey-nav');
+
 var SurveyView = require('./survey-view');
 var ampersandMixin = require('ampersand-react-mixin');
 
@@ -34,7 +34,7 @@ module.exports = React.createClass({
   render: function () {
     return (
             <div className='grid-flex-container'>
-          <SurveyNav />
+
           <SurveyView survey={this.props.survey} question={this.props.question} />
       </div>
     )

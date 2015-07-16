@@ -15,7 +15,7 @@ module.exports = React.createClass({
   // attribute to that question component
   
     return (
-      <div className='question-slider'>
+      <div>
 
         Questions will render here...
         <Query question={this.props.question} />

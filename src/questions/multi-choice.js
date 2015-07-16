@@ -43,11 +43,19 @@ module.exports = React.createClass({
   // maybe.... trying it on add new button first
   onSaveQuestionClick: function(event) {
     event.preventDefault();
-    alert('you are saving to localStorage');
-    this.props.question.save(this.state);
+    // console output for debugging
+    app.survey.questions.on('add', function(question) {
+      console.log('Added ' + question.query + ' ' + question.cid);
+    });
+    // saves it to app.question
+    var savedQuestion = this.props.question.save(this.state);
+    // adds it to app.survey.questions collection
+    app.survey.questions.add(
+      [savedQuestion]
+    );
     // set editing on query and info
     // set initial state on multi-choice --actuallly - set up a new question
-    this.setState({choices: [], text:this.props.question.choice});
+    //this.setState({choices: [], text:this.props.question.choice});
   },
 
   render: function() {

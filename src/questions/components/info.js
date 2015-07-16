@@ -45,11 +45,11 @@ module.exports = React.createClass({
       content = (
         <form onSubmit={this.onSubmit}>
          <fieldset>
-            <textarea name='info' value={this.state.info} onChange={this.onInfoChange} className='form-input'/>
-            <button type='submit' className='button button-outlined button-small'>
+            <textarea name='info' value={this.state.info} onChange={this.onInfoChange} />
+            <button type='submit'>
               Save
             </button>
-            <button onClick={this.onCancelClick} type='button' className='button button-outlined button-small'>
+            <button onClick={this.onCancelClick} type='button'>
               Cancel
             </button>
           </fieldset>
@@ -61,7 +61,7 @@ module.exports = React.createClass({
         <div>
           <span>{this.props.question.info}</span>
           <span>
-            <button onClick={this.onEditClick} type='button' className='button button-outlined button-small'>
+            <button onClick={this.onEditClick} type='button'>
               Edit
             </button>
           </span>
