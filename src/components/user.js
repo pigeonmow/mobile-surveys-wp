@@ -9,7 +9,6 @@ module.exports = React.createClass({
       // edit method
   onEditClick: function(event) {
     event.preventDefault();
-    // alert('click edit you did!');
     this.props.survey.editUser = true;
   },
 
@@ -20,23 +19,16 @@ module.exports = React.createClass({
     this.setState(this.getInitialState());
   },
     
-  // save method -- OR this could be form onSubmit method instead
-/*  onSaveClick: function(event) {
-    event.preventDefault();
-      
-  },
-  */
   onSubmit: function(event) {
     event.preventDefault();
     this.props.survey.save(this.state);
     this.props.survey.editUser = false;
   },
-  // initial state - MOVE UP  TO HIGHR COMPONENT & PASS DOWN!!!!!!*****************
  
-    getInitialState: function() {
-      return {
-        username: this.props.survey.username
-      }
+  getInitialState: function() {
+    return {
+      username: this.props.survey.username
+    }
   },
   // onChange handler - getting the event
   onUsernameChange: function(event) {
@@ -45,19 +37,18 @@ module.exports = React.createClass({
     this.setState({
       // event.target - extracting whatever caused the event
       // could use .slice() on end here if wish to keep first however many digits
-      // as standard uneditable (see label-item.js)
+      // as standard uneditable (see label-item.js example)
       username: event.target.value
     })
   },
   
   render: function() {
     var content;
-    
-    // branching of render method set up - assigning to content var
+       // branching of render method set up - assigning to content var
     if (this.props.survey.editUser === true) {
       // Edit mode
       content = (
-        <div>
+
         <form  onSubmit={this.onSubmit}>
           <fieldset>
             <input type='text' value={this.state.username} onChange={this.onUsernameChange} name='user' />
@@ -69,7 +60,7 @@ module.exports = React.createClass({
             </button>
           </fieldset>
         </form>
-        </div>
+
       );
     } else {
       // display mode

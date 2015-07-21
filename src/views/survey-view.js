@@ -5,7 +5,6 @@ var Title = require('../components/title');
 var Instructions = require('../components/instructions');
 var QuestionSlider = require('../components/question-slider');
 var ampersandMixin = require('ampersand-react-mixin');
-
 // emit change events here - top level component which is stateful & goes
 // down the tree
 // so this is kinda like the controller...
@@ -18,14 +17,12 @@ module.exports = React.createClass({
       value: 'multi'
     }
   },
-
 // deal with changing selection
   handleChange: function(event) {
     this.setState({
       value: event.target.value
     });
   },
-  
   //Add question button handler
   onAddClick: function(event) {
     alert('Adding...');

@@ -6,8 +6,7 @@ var ampersandMixin = require('ampersand-react-mixin');
 
 module.exports = React.createClass({
   displayName: 'MultiChoice',
-  mixins: [ampersandMixin],
-  
+  mixins: [ampersandMixin], 
   // start with empty array & empty text string - choices is an array of strings
   getInitialState: function() {
     return {
@@ -37,7 +36,6 @@ module.exports = React.createClass({
     // update the state
     this.setState({choices: choicesCopy});  
   },
-  
   // save the current question to a question collection for this survey instance
   // and reset the form ready for a new question
   // maybe.... trying it on add new button first

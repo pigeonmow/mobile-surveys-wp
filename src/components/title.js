@@ -44,7 +44,7 @@ module.exports = React.createClass({
     if (this.props.survey.editTitle === true) {
       // Edit mode
       content = (
-        <div>
+
         <form  onSubmit={this.onSubmit}>
           <fieldset>
             <input type='text' value={this.state.title} onChange={this.onTitleChange} name='user' />
@@ -56,7 +56,7 @@ module.exports = React.createClass({
             </button>
           </fieldset>
         </form>
-        </div>
+
       );
     } else {
       // display mode

@@ -6,14 +6,9 @@
 var app = require('ampersand-app');
 var Router = require('ampersand-router');
 var React = require('react');
-
 var MainView = require('./main-view');
 var HomePage = require('./views/home');
 var CreatePage = require('./views/create');
-// var SurveyPage = require('./views/survey');
-
-
-
 //define routes & route handlers by extending Router: key-value pairs: key
 //is the route (url (nb. blank is same as /)) value is the handler
 module.exports = Router.extend({
@@ -41,19 +36,15 @@ module.exports = Router.extend({
     React.render(view, document.body);
       
   },
-    
-  
+   
 //create the routes
   routes: {
     '': 'home',
     'create': 'create',
-  //  'survey': 'survey',
-  //  'preview': 'preview',
     'add-question': 'add-question',
     'edit-question': 'edit-question',
     'add-element': 'add-element'
   },
-
 //create the handlers
   home: function () {
     // layout false on this one removes the NAV using an object rather than
@@ -61,17 +52,7 @@ module.exports = Router.extend({
     this.renderView(<HomePage />, {layout: false});
   },
   
- // preview: function () {
- //   this.renderView(<PreviewView />);
- // },
-  
- // survey: function () {
- //   this.renderView(<SurveyPage />);
- // },
-  
   create: function () {
-
-    //console.log('on survey page')
     this.renderView(<CreatePage survey={app.survey} question={app.question} />);
   }
 });

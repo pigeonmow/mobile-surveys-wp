@@ -26,10 +26,6 @@ module.exports = React.createClass({
 
   	
     return (
-                
-      // ToDo html content to be sorted
-                // htmlFor - another React specific thingy
-      // ToDo - refactor out the NAV & restyle it too
       <LinkHelper>
         <nav className='top-nav top-nav-light cf' role='navigation'>
           <input id='menu-toggle' className='menu-toggle' type='checkbox'/>

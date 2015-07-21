@@ -20,22 +20,16 @@ module.exports = React.createClass({
     
     if (pathname) {
       event.preventDefault()
-      // example code for if we want to use
-      // as event bus to pass data: don't over use though
-      // - hard to keep track of:
-      // app.trigger('local', {some: 'data'}); // see also app.js
       
-      // tell app to navigate internally - could do this:
+      // tell app to navigate internally 
       app.router.history.navigate(pathname)
-      // but what's app??? - do this instead:
       
     }
   },
                                    
   render () {
     return (
-      // '...this.props' allows properties to be passed through, className etc
-      // (poss this is ES6??) - yes also jsx spread attiributes - dynamically applying props
+      // '...this.props':jsx spread attiributes - dynamically applying props
       <div {...this.props} onClick={this.onClick}>
         {this.props.children}
       </div>

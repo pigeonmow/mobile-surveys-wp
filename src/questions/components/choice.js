@@ -4,7 +4,7 @@ module.exports = React.createClass({
  // in here we have access to 'this.props.choices' from multi-choice.js -  
 
   render: function() {
-
+// ****** rewrite so function is not separate?????? ************
     var createChoice = function(choiceElement, index) {
       return (
         <li key={index + choiceElement}>
