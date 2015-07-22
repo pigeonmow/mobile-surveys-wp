@@ -1,16 +1,22 @@
+/* Question Model - question.js
+ * 01/07/2015
+ * Author: Matthew Moss
+ */
 // observable model - any property defined has a getter & setter
 // Different from Backbone model in following ways:
 // backbone - don't have to define properties initially
-// with ampersand - anything want to persist as a model - have to define as a property - why? - human readability
+// with ampersand - anything want to persist as a model - have to define as a
+// property - why? - human readability
 // props: come from server & persist back to server - eg id, avatar_url
 // session: stuff to keep around in browser - eg a user token
-// derived: 
+// derived:
+'use strict';
 var Model = require('ampersand-model');
 var syncFactory = require('ampersand-sync-localstorage');
 // amp-sync-ls allows us to put sync instead of url
 module.exports = Model.extend({
   sync: syncFactory('multi-choice'),
-  
+
   initialize: function() {
     this.questionType = 'Multiple Choice'
     this.query = 'Enter question here'
@@ -18,7 +24,7 @@ module.exports = Model.extend({
     this.choice = 'Enter answer choice'
     this.choices = []
   },
-  
+
   props: {
     questionType: 'string',
     query: 'string',
@@ -26,18 +32,18 @@ module.exports = Model.extend({
     choice: 'string',
     choices: 'array'
   },
-  
+
   session: {
-    
+
     editQuery: {
       type: 'boolean',
       default: true
     },
-    
+
     editInfo: {
       type: 'boolean',
       default: true
     }
   }
-  
+
 });

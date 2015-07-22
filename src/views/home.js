@@ -1,3 +1,8 @@
+/* Home View Component - home.js
+ * 01/07/2015
+ * Author: Matthew Moss
+ */
+'use strict';
 // Home Page View - src/views/home.js
 var React = require('react');
 var LinkHelper = require('../helpers/link-helper');
@@ -6,7 +11,7 @@ module.exports = React.createClass({
   //name to show in React devtools extension
   displayName: 'HomePage',
   // render method
-  render: function () {
+  render: function() {
     return (
       // className is a React specific thingy
       // but that's because that's the actual name on the element in the DOM

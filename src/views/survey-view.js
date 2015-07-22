@@ -1,6 +1,11 @@
+/* Survey View Component - survey-view.js
+ * 01/07/2015
+ * Author: Matthew Moss
+ */
+'use strict';
 // Preview Survey View - src/components/survey-view.js
 var React = require('react');
-var User = require('../components/user');
+var UserName = require('../components/username');
 var Title = require('../components/title');
 var Instructions = require('../components/instructions');
 var QuestionSlider = require('../components/question-slider');
@@ -11,13 +16,13 @@ var ampersandMixin = require('ampersand-react-mixin');
 module.exports = React.createClass({
   displayName: 'PreviewPage',
   mixins: [ampersandMixin],
-  
-    getInitialState: function () {
+
+    getInitialState: function() {
     return {
       value: 'multi'
-    }
+    };
   },
-// deal with changing selection
+  // deal with changing selection
   handleChange: function(event) {
     this.setState({
       value: event.target.value
@@ -26,19 +31,16 @@ module.exports = React.createClass({
   //Add question button handler
   onAddClick: function(event) {
     alert('Adding...');
-    
   },
-   
-  render: function () {
-  
+
+  render: function() {
+
     return (
       <div className='grid-flex-cell' id='preview-survey'>
-
-          <User survey={this.props.survey} />
-          <Title survey={this.props.survey} />
-          <Instructions survey={this.props.survey} />
-          <QuestionSlider question={this.props.question} />
-
+          <UserName />
+          <Title  />
+          <Instructions  />
+          <QuestionSlider/>
         <form>
           <label htmlFor='select'>
             New Question
@@ -53,22 +55,21 @@ module.exports = React.createClass({
             Add
           </button>
         </form>
-      
-                <span className='pull-right'>
-            <button type='button'>
-              Save Survey
-            </button>
-          </span>
-          <span className='pull-right'>
-            <button type='button'>
-              Reset Survey
-            </button>
-          </span>
-          <span className='pull-right'>
-            <button type='button'>
-              Publish Survey
-            </button>
-          </span>
+        <span className='pull-right'>
+          <button type='button'>
+            Save Survey
+          </button>
+        </span>
+        <span className='pull-right'>
+          <button type='button'>
+            Reset Survey
+          </button>
+        </span>
+        <span className='pull-right'>
+          <button type='button'>
+            Publish Survey
+          </button>
+        </span>
       </div>
     );
   }

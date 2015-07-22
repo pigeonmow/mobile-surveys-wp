@@ -1,3 +1,7 @@
+/* Router - router.js
+ * 01/07/2015
+ * Author: Matthew Moss
+ */
 // Application Router - router.js
 // Uses ampersand-router module
 //dealing with urls on the clientside: create code that handles & renders
@@ -9,6 +13,7 @@ var React = require('react');
 var MainView = require('./main-view');
 var HomePage = require('./views/home');
 var CreatePage = require('./views/create');
+var Preview = require('./views/preview');
 //define routes & route handlers by extending Router: key-value pairs: key
 //is the route (url (nb. blank is same as /)) value is the handler
 module.exports = Router.extend({
@@ -41,11 +46,16 @@ module.exports = Router.extend({
   routes: {
     '': 'home',
     'create': 'create',
-    'add-question': 'add-question',
-    'edit-question': 'edit-question',
-    'add-element': 'add-element'
+ //   'add-question': 'add-question',
+  //  'edit-question': 'edit-question',
+    'add-element': 'add-element',
+    'preview': 'preview'
   },
 //create the handlers
+  preview: function() {
+    this.renderView(<Preview />);
+  },
+                    
   home: function () {
     // layout false on this one removes the NAV using an object rather than
     // just false to improve human readability
@@ -53,6 +63,6 @@ module.exports = Router.extend({
   },
   
   create: function () {
-    this.renderView(<CreatePage survey={app.survey} question={app.question} />);
+    this.renderView(<CreatePage />);
   }
 });

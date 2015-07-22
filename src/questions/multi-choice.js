@@ -1,3 +1,8 @@
+/*Multiple Choice Question Component - multi-choice.js
+ * 01/07/2015
+ * Author: Matthew Moss
+ */
+'use strict';
 // Multiple choice question Slide
 var React = require('react');
 var Choice = require('./components/choice');
@@ -6,7 +11,7 @@ var ampersandMixin = require('ampersand-react-mixin');
 
 module.exports = React.createClass({
   displayName: 'MultiChoice',
-  mixins: [ampersandMixin], 
+  mixins: [ampersandMixin],
   // start with empty array & empty text string - choices is an array of strings
   getInitialState: function() {
     return {
@@ -14,27 +19,29 @@ module.exports = React.createClass({
       text: this.props.question.choice
     };
   },
- // when you type state updates  
+ // when you type state updates
   onChange: function(event) {
     this.setState({text: event.target.value});
   },
-  //when button is clicked Array.concat() creates & returns new array with original contents plus what was typed in
-  //then state is set to the new array and empty text string
+  // when button is clicked Array.concat() creates & returns new array with
+  // original contents plus what was typed in
+  // then state is set to the new array and empty text string
   onSubmitChoice: function(event) {
     event.preventDefault();
     var nextChoices = this.state.choices.concat([this.state.text]);
     var nextText = this.props.question.choice;
     this.setState({choices: nextChoices, text: nextText});
   },
-  // remove a choice - currently from start of array - needs updating to ask user which choice they wish to remove*************************************
+  // remove a choice - currently from start of array - needs updating to ask
+  // user which choice they wish to remove*************************************
   // using Array.splice()
   onRemoveClick: function(index) {
     // copy array
     var choicesCopy = this.state.choices.slice();
-    // remove element at index 
+    // remove element at index
     choicesCopy.splice(index, 1);
     // update the state
-    this.setState({choices: choicesCopy});  
+    this.setState({choices: choicesCopy});
   },
   // save the current question to a question collection for this survey instance
   // and reset the form ready for a new question
@@ -42,9 +49,7 @@ module.exports = React.createClass({
   onSaveQuestionClick: function(event) {
     event.preventDefault();
     // console output for debugging
-    app.survey.questions.on('add', function(question) {
-      console.log('Added ' + question.query + ' ' + question.cid);
-    });
+
     // saves it to app.question
     var savedQuestion = this.props.question.save(this.state);
     // adds it to app.survey.questions collection
@@ -57,18 +62,22 @@ module.exports = React.createClass({
   },
 
   render: function() {
-// <Choice/> renders the results of 'onSubmitChoice' - if it's removed the array is still concatenated - <Choice /> is JUST rendering
-    //****** need to sort fact that it's onClick NOT onSubmit and 'Enter' ux issue
+    // <Choice/> renders the results of 'onSubmitChoice' - if it's removed the
+    // array is still concatenated - <Choice /> is JUST rendering
+    //*** need to sort fact that it's onClick NOT onSubmit and 'Enter' ux issue
     return (
       <div>
         <Choice choices={this.state.choices} />
         <form>
           <input onChange={this.onChange} value={this.state.text} />
-          <button type='button' onClick={this.onSubmitChoice}>Add choice</button>
-          <button type='button' onClick={this.onRemoveClick}>Remove a choice</button>
+          <button type='button' onClick={this.onSubmitChoice}>
+            Add choice</button>
+          <button type='button' onClick={this.onRemoveClick}>
+            Remove a choice</button>
         </form>
-            <button type='button' onClick={this.onSaveQuestionClick}>Save Question</button>
-      <button type='button'>Clear All</button>
+        <button type='button' onClick={this.onSaveQuestionClick}>
+          Save Question</button>
+        <button type='button'>Clear All</button>
       </div>
     );
 

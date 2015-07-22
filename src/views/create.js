@@ -1,3 +1,8 @@
+/* Create View Component - create.js
+ * 01/07/2015
+ * Author: Matthew Moss
+ */
+'use strict';
 // Create Survey View - src/views/create.js
 var React = require('react');
 //var AddQuestion = require('../components/add-question');
@@ -11,14 +16,13 @@ module.exports = React.createClass({
   //name to show in React devtools extension
   displayName: 'CreatePage',
   mixins: [ampersandMixin],
-  
-  render: function () {
-    return (
-            <div className='grid-flex-container'>
 
-          <SurveyView survey={this.props.survey} question={this.props.question} />
+  render: function() {
+    return (
+      <div className='grid-flex-container'>
+        <SurveyView />
       </div>
-    )
+    );
   }
 
 });
