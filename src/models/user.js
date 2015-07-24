@@ -4,17 +4,28 @@
  */
 'use strict';
 var Model = require('ampersand-model');
-var SurveyCollection = require('./survey-collection');
+var Survey = require('./survey');
 var syncFactory = require('ampersand-sync-localstorage');
 
 module.exports = Model.extend({
   sync: syncFactory('user'),
+  
+  initialize: function() {
+    this.survey = new Survey();
+  },
 
   props: {
     userName: 'string'
   },
+  
+  session: {
+    editUser: {
+      type: 'boolean',
+      default: true
+    }
+  },
 
-  collections: {
+/*  collections: {
     surveys: SurveyCollection
-  }
+  }*/
 });

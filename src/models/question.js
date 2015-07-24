@@ -17,23 +17,24 @@ var syncFactory = require('ampersand-sync-localstorage');
 module.exports = Model.extend({
   sync: syncFactory('multi-choice'),
 
-  initialize: function() {
+/*  initialize: function() {
     this.questionType = 'Multiple Choice'
     this.query = 'Enter question here'
     this.info = 'Enter question information'
     this.choice = 'Enter answer choice'
     this.choices = []
-  },
+  },*/ // not sure need to initialize...
 
   props: {
-    questionType: 'string',
+   // questionType: 'string', // not sure about this being needed
+    Q_id: 'number',
     query: 'string',
     info: 'string',
-    choice: 'string',
+   // choice: 'string', // not sure this is needed - as they're stored in array
     choices: 'array'
-  },
+  }
 
-  session: {
+/*  session: {
 
     editQuery: {
       type: 'boolean',
@@ -44,6 +45,6 @@ module.exports = Model.extend({
       type: 'boolean',
       default: true
     }
-  }
+  }*/ // temp moved to survey model
 
 });

@@ -7,16 +7,16 @@
 var React = require('react');
 var Choice = require('./components/choice');
 // not entirely sure if i need the mixin - try taking it out later to see...
-var ampersandMixin = require('ampersand-react-mixin');
+// var ampersandMixin = require('ampersand-react-mixin');
 
 module.exports = React.createClass({
   displayName: 'MultiChoice',
-  mixins: [ampersandMixin],
+  //mixins: [ampersandMixin],
   // start with empty array & empty text string - choices is an array of strings
   getInitialState: function() {
     return {
-      choices: this.props.question.choices,
-      text: this.props.question.choice
+      choices: this.props.survey.questions.models[0].choices,
+      text: ''
     };
   },
  // when you type state updates
@@ -48,7 +48,7 @@ module.exports = React.createClass({
   // maybe.... trying it on add new button first
   onSaveQuestionClick: function(event) {
     event.preventDefault();
-    // console output for debugging
+
 
     // saves it to app.question
     var savedQuestion = this.props.question.save(this.state);
@@ -65,10 +65,11 @@ module.exports = React.createClass({
     // <Choice/> renders the results of 'onSubmitChoice' - if it's removed the
     // array is still concatenated - <Choice /> is JUST rendering
     //*** need to sort fact that it's onClick NOT onSubmit and 'Enter' ux issue
+
     return (
       <div>
         <Choice choices={this.state.choices} />
-        <form>
+        <form className='grid-flex-cell'>
           <input onChange={this.onChange} value={this.state.text} />
           <button type='button' onClick={this.onSubmitChoice}>
             Add choice</button>

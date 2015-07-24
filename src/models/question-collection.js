@@ -11,7 +11,20 @@ var Question = require('./question');
 
 module.exports = Collection.extend({
   sync: syncFactory('question-collection'),
+  mainIndex: 'Q_id',
 
-  model: Question
+  model: Question,
+  
+  initialize: function() {
+    // dummy & blank questions for startup -  adds 1 entry to each survey created in survey-collection on start up
+    this.add([
+      {
+        Q_id: 1,
+        query: '',
+        info: '',
+        choices: []
+      }
+    ])
+  }
 
 });

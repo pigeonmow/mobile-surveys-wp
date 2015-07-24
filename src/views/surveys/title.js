@@ -4,11 +4,11 @@
  */
 'use strict';
 var React = require('react');
-var ampersandMixin = require('ampersand-react-mixin');
+//var ampersandMixin = require('ampersand-react-mixin');
 
 module.exports = React.createClass({
   displayName: 'Title',
-  mixins: [ampersandMixin],
+ // mixins: [ampersandMixin],
   // edit method
   onEditClick: function(event) {
     event.preventDefault();
@@ -40,6 +40,8 @@ module.exports = React.createClass({
   },
 
   render: function() {
+
+   // console.log('this.state - title.js ' + this.state);
     var content;
     // branching of render method set up - assigning to content var
     if (this.props.survey.editTitle === true) {
@@ -47,6 +49,7 @@ module.exports = React.createClass({
       content = (
         <form onSubmit={this.onSubmit}>
           <fieldset>
+        <legend>Survey title</legend>
             <input type='text' value={this.state.title}
               onChange={this.onTitleChange} name='user' />
             <button type='submit'>
@@ -61,7 +64,7 @@ module.exports = React.createClass({
     } else {
       // display mode
       content = (
-        <div className='user'>
+        <div>
           <span>{this.props.survey.title}</span>
           <span>
             <button type='button' onClick={this.onEditClick}>

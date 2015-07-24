@@ -8,40 +8,40 @@ var React = require('react');
 module.exports = React.createClass({
   displayName: 'Info',
        // edit method
-  onEditClick: function(event) {
+/*  onEditClick: function(event) {
     event.preventDefault();
     // alert('click edit you did!');
     this.props.question.editInfo = true;
-  },
+  },*/
   // cancel method
-  onCancelClick: function(event) {
+/*  onCancelClick: function(event) {
     event.preventDefault();
     this.props.question.editInfo = false;
     this.setState(this.getInitialState());
-  },
+  },*/
   // onSubmit method - or this could be onClick instead???
-  onSubmit: function(event) {
+/*  onSubmit: function(event) {
     event.preventDefault();
     this.props.question.save(this.state);
     this.props.question.editInfo = false;
-  },
+  },*/
 
-  getInitialState: function() {
+  /*getInitialState: function() {
     return {
-      info: this.props.question.info
+      info: this.props.info
     };
-  },
+  },*/
   // handlers
-  onInfoChange: function(event) {
+/*  onInfoChange: function(event) {
     this.setState({
       info: event.target.value
     });
-  },
+  },*/
 
   render: function() {
     var content;
 
-    if (this.props.question.editInfo === true) {
+    if (this.props.editInfo === true) {
       content = (
         <form onSubmit={this.onSubmit}>
          <fieldset>
@@ -59,7 +59,7 @@ module.exports = React.createClass({
     } else {
       content = (
         <div>
-          <span>{this.props.question.info}</span>
+          <span>{this.props.info}</span>
           <span>
             <button onClick={this.onEditClick} type='button'>
               Edit

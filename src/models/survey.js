@@ -11,26 +11,36 @@ var QuestionCollection = require('./question-collection');
 module.exports = Model.extend({
   sync: syncFactory('survey'),
   // init runs once when new instance instantiated
-/*  initialize: function() {
-    this.username = 'Your user name'
-    this.title = 'Enter a survey title'
-    this.instructions = 'Enter any user instructions here'
-  },*/
+  initialize: function() {
+    this.username = ''
+    this.title = ''
+    this.instructions = ''
+  },
   // stuff expected from server & to persist back to server
   // the model then creates a getter & setter for each prop &
   // they are observable - model broadcasts events
   props: {
-    username: 'string',
+   // username: 'string', // moved this to the user model
     title: 'string',
     instructions: 'string'
   },
   // session stays local to browser - not saved when calling model.save method
   session: {
 
-    editUser: {
+    editQuery: {
       type: 'boolean',
       default: true
     },
+
+    editInfo: {
+      type: 'boolean',
+      default: true
+    },
+
+/*    editUser: {
+      type: 'boolean',
+      default: true
+    },*/ // relocated to user model
 
     editTitle: {
       type: 'boolean',

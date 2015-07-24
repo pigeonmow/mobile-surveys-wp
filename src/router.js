@@ -22,6 +22,8 @@ module.exports = Router.extend({
   // menu - helpful if going to build in a login later - don't want access to
   // NAV for non registered people
   renderView: function (view, opts) {
+   // console.log('this.props - router.js ' + this.props);
+   // console.log('this.state - router.js ' + this.state);
     // specify default arg for opts - nothing passed in - use a layout
     if (typeof(opts)==='undefined') {
       opts = {layout: true}
@@ -63,6 +65,6 @@ module.exports = Router.extend({
   },
   
   create: function () {
-    this.renderView(<CreatePage />);
+    this.renderView(<CreatePage user={app.user} survey={app.user.survey} />);
   }
 });

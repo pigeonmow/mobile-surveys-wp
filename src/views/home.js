@@ -18,9 +18,9 @@ module.exports = React.createClass({
       // another is 'for' which becomes 'htmlFor'
       <LinkHelper className='container'>
         <header>
-          <h1>Survey</h1>
+          <h1>Mobile Surveys</h1>
         </header>
-        <div>
+        <div className='grid-flex-cell'>
           <p>Welcome, here you can create Surveys!</p>
           <a href='/create' className='button button-outlined'>
             Create New Survey

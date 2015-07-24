@@ -5,32 +5,32 @@
 'use strict';
 // User name field
 var React = require('react');
-var ampersandMixin = require('ampersand-react-mixin');
+//var ampersandMixin = require('ampersand-react-mixin');
 
 module.exports = React.createClass({
   displayName: 'User',
-  mixins: [ampersandMixin],
+ // mixins: [ampersandMixin],
   // edit method
   onEditClick: function(event) {
     event.preventDefault();
-    this.props.survey.editUser = true;
+    this.props.user.editUser = true;
   },
   // cancel method
   onCancelClick: function(event) {
     event.preventDefault();
-    this.props.survey.editUser = false;
+    this.props.user.editUser = false;
     this.setState(this.getInitialState());
   },
 
   onSubmit: function(event) {
     event.preventDefault();
-    this.props.survey.save(this.state);
-    this.props.survey.editUser = false;
+    this.props.user.save(this.state);
+    this.props.user.editUser = false;
   },
 
   getInitialState: function() {
     return {
-      username: this.props.survey.username
+      userName: this.props.user.userName
     };
   },
   // onChange handler - getting the event
@@ -41,19 +41,20 @@ module.exports = React.createClass({
       // event.target - extracting whatever caused the event
       // could use .slice() on end here if wish to keep first however many
       // digits as standard uneditable (see label-item.js example)
-      username: event.target.value
+      userName: event.target.value
     });
   },
 
   render: function() {
     var content;
        // branching of render method set up - assigning to content var
-    if (this.props.survey.editUser === true) {
+    if (this.props.user.editUser === true) {
       // Edit mode
       content = (
         <form onSubmit={this.onSubmit}>
           <fieldset>
-            <input type='text' value={this.state.username}
+            <legend>User Name</legend>
+            <input type='text' value={this.state.userName}
               onChange={this.onUsernameChange} name='user' />
             <button type='submit'>
                     Save
@@ -67,8 +68,8 @@ module.exports = React.createClass({
     } else {
       // display mode
       content = (
-        <div className='user'>
-          <span>{this.props.survey.username}</span>
+        <div>
+          <span>{this.props.user.userName}</span>
           <span>
             <button type='button'onClick={this.onEditClick}>
                   Edit

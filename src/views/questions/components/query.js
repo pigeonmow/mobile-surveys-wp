@@ -4,31 +4,33 @@
  */
 'use strict';
 var React = require('react');
+
 // mixin needed???...**************
 module.exports = React.createClass({
   displayName: 'Query',
+
   // edit method
-  onEditClick: function(event) {
+/*  onEditClick: function(event) {
     event.preventDefault();
     // alert('click edit you did!');
-    this.props.question.editQuery = true;
-  },
+    this.props.survey.questions.editQuery = true;
+  },*/
   // cancel method
-  onCancelClick: function(event) {
+  /*onCancelClick: function(event) {
     event.preventDefault();
-    this.props.question.editQuery = false;
+    this.props.survey.questions.models.editQuery = false;
     this.setState(this.getInitialState());
-  },
+  },*/
   // onSubmit method - or this could be onClick instead???
   onSubmit: function(event) {
     event.preventDefault();
-    this.props.question.save(this.state);
-    this.props.question.editQuery = false;
+    this.props.survey.questions.add(this.state);
+    this.props.survey.editQuery = false;
   },
 
   getInitialState: function() {
     return {
-      query: this.props.question.query
+      query: ''
     };
   },
   // handlers
@@ -41,10 +43,11 @@ module.exports = React.createClass({
   render: function() {
     var content;
 
-    if (this.props.question.editQuery === true) {
+    if (this.props.survey.editQuery === true) {
       content = (
         <form onSubmit={this.onSubmit}>
           <fieldset>
+            <legend>Query</legend>
             <input type='text' name='query' value={this.state.query}
               onChange={this.onQueryChange} />
             <button type='submit'>
@@ -59,7 +62,7 @@ module.exports = React.createClass({
     } else {
       content = (
         <div>
-          <span>{this.props.question.query}</span>
+          <span>{this.props.survey}</span>
           <span>
             <button onClick={this.onEditClick} type='button'>
               Edit
