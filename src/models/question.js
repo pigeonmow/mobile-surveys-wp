@@ -2,6 +2,8 @@
  * 01/07/2015
  * Author: Matthew Moss
  */
+'use strict';
+var State = require('ampersand-state');
 // observable model - any property defined has a getter & setter
 // Different from Backbone model in following ways:
 // backbone - don't have to define properties initially
@@ -10,31 +12,21 @@
 // props: come from server & persist back to server - eg id, avatar_url
 // session: stuff to keep around in browser - eg a user token
 // derived:
-'use strict';
-var Model = require('ampersand-model');
-var syncFactory = require('ampersand-sync-localstorage');
-// amp-sync-ls allows us to put sync instead of url
-module.exports = Model.extend({
-  sync: syncFactory('multi-choice'),
-
-/*  initialize: function() {
-    this.questionType = 'Multiple Choice'
-    this.query = 'Enter question here'
-    this.info = 'Enter question information'
-    this.choice = 'Enter answer choice'
-    this.choices = []
-  },*/ // not sure need to initialize...
-
+module.exports = State.extend({
+  
   props: {
-   // questionType: 'string', // not sure about this being needed
-    Q_id: 'number',
-    query: 'string',
-    info: 'string',
-   // choice: 'string', // not sure this is needed - as they're stored in array
-    choices: 'array'
-  }
-
-/*  session: {
+    questionNumber: ['number', 'true', ''],
+    query: ['string', true, ''],
+    info: ['string', false, ''],
+   	//choice: ['string',true, ''], 
+    choices: {
+      type: 'array',
+      default: function() { return []; }
+    }
+  },
+  
+  // usure if needed
+  session: {
 
     editQuery: {
       type: 'boolean',
@@ -45,6 +37,6 @@ module.exports = Model.extend({
       type: 'boolean',
       default: true
     }
-  }*/ // temp moved to survey model
-
+  }
+  
 });

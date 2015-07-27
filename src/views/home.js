@@ -3,7 +3,6 @@
  * Author: Matthew Moss
  */
 'use strict';
-// Home Page View - src/views/home.js
 var React = require('react');
 var LinkHelper = require('../helpers/link-helper');
 

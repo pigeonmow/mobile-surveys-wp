@@ -33,7 +33,7 @@ app.extend({
     // called browser
     //reads url & calls appropriate handler in router
     this.router.history.start();
-    console.log(this.props);
+
   }
 });
 

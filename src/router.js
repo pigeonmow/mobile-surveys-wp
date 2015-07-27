@@ -2,18 +2,16 @@
  * 01/07/2015
  * Author: Matthew Moss
  */
-// Application Router - router.js
-// Uses ampersand-router module
-//dealing with urls on the clientside: create code that handles & renders
-//page from the 200.html catchall file
-//import ampersand-app - a singleton pattern for the global app
 var app = require('ampersand-app');
 var Router = require('ampersand-router');
 var React = require('react');
 var MainView = require('./main-view');
 var HomePage = require('./views/home');
-var CreatePage = require('./views/create');
-var Preview = require('./views/preview');
+var CreateSurvey = require('./views/create-survey');
+// Uses ampersand-router module
+//dealing with urls on the clientside: create code that handles & renders
+//page from the 200.html catchall file
+//import ampersand-app - a singleton pattern for the global app
 //define routes & route handlers by extending Router: key-value pairs: key
 //is the route (url (nb. blank is same as /)) value is the handler
 module.exports = Router.extend({
@@ -48,15 +46,11 @@ module.exports = Router.extend({
   routes: {
     '': 'home',
     'create': 'create',
- //   'add-question': 'add-question',
-  //  'edit-question': 'edit-question',
-    'add-element': 'add-element',
-    'preview': 'preview'
   },
 //create the handlers
-  preview: function() {
+/*  preview: function() {
     this.renderView(<Preview />);
-  },
+  },*/
                     
   home: function () {
     // layout false on this one removes the NAV using an object rather than
@@ -65,6 +59,6 @@ module.exports = Router.extend({
   },
   
   create: function () {
-    this.renderView(<CreatePage user={app.user} survey={app.user.survey} />);
+    this.renderView(<CreateSurvey user={app.user} />);
   }
 });

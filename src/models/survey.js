@@ -1,63 +1,51 @@
-/* Survey Model - survey.js
+/* Survey - Collection of Questions - survey.js
  * 01/07/2015
  * Author: Matthew Moss
  */
-// A survey - the model where a complete survey saves...?
-// also currently a model for the preview...
 'use strict';
-var Model = require('ampersand-model');
-var syncFactory = require('ampersand-sync-localstorage');
-var QuestionCollection = require('./question-collection');
-module.exports = Model.extend({
-  sync: syncFactory('survey'),
-  // init runs once when new instance instantiated
+var Collection = require('ampersand-collection');
+var Question = require('./question');
+var debounce = require('debounce');
+var STORAGE_KEY = 'survey-questions';
+// A survey - A collection of Question models
+// A collection of models - a storage space - think of as an observable array
+// of models 'ampersand-rest-collection' includes RESTful methods
+module.exports = Collection.extend({
+  mainIndex: 'questionNumber',
+  
+  model: Question,
+  
+  // have this collection watch itself & persist to local storage when anything changes - nice & simple (from todomvc as well):
   initialize: function() {
-    this.username = ''
-    this.title = ''
-    this.instructions = ''
+    // adds an empty question ready for editing on start up
+    this.add([{ questionNumber: 1,
+                query: 'test',
+                choices: ['yes test', 'no test']},
+                { questionNumber: 2,
+                query: 'test_#2',
+                choices: ['toast', 'marmalade', 'bananas']}]);
+    
+    this.readFromLocalStorage();
+    
+    // put a debounce on- postpones execution for specified milliseconds
+    this.saveToLocalStorage = debounce(this.saveToLocalStorage, 100);
+    
+    //listen for changes to the collection & save when it does
+    this.on('all', this.writeToLocalStorage, this);
   },
-  // stuff expected from server & to persist back to server
-  // the model then creates a getter & setter for each prop &
-  // they are observable - model broadcasts events
-  props: {
-   // username: 'string', // moved this to the user model
-    title: 'string',
-    instructions: 'string'
+  
+  // from ampersand todomvc
+  saveToLocalStorage: function() {
+    localStorage[STORAGE_KEY] = JSON.stringify(this);
   },
-  // session stays local to browser - not saved when calling model.save method
-  session: {
-
-    editQuery: {
-      type: 'boolean',
-      default: true
-    },
-
-    editInfo: {
-      type: 'boolean',
-      default: true
-    },
-
-/*    editUser: {
-      type: 'boolean',
-      default: true
-    },*/ // relocated to user model
-
-    editTitle: {
-      type: 'boolean',
-      default: true
-    },
-
-    editInstructions: {
-      type: 'boolean',
-      default: true
+  
+  readFromLocalStorage: function() {
+    var existingData = localStorage[STORAGE_KEY];
+    
+    if (existingData) {
+      this.set(JSON.parse(existingData));
     }
-
-  },
-  // instantiating new question collection for this survey
-  // this collection will always be created when the model is created
-  collections: {
-    questions: QuestionCollection
   }
-
+  
 });
 
