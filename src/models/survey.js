@@ -17,14 +17,15 @@ module.exports = Collection.extend({
   
   // have this collection watch itself & persist to local storage when anything changes - nice & simple (from todomvc as well):
   initialize: function() {
-    // adds an empty question ready for editing on start up
-    this.add([{ questionNumber: 1,
+    
+    // adds questions for debugging
+/*    this.add([{ questionNumber: 1,
                 query: 'test',
                 choices: ['yes test', 'no test']},
                 { questionNumber: 2,
                 query: 'test_#2',
-                choices: ['toast', 'marmalade', 'bananas']}]);
-    
+                choices: ['toast', 'marmalade', 'bananas']}]);*/
+    // see what's already there
     this.readFromLocalStorage();
     
     // put a debounce on- postpones execution for specified milliseconds
@@ -34,7 +35,9 @@ module.exports = Collection.extend({
     this.on('all', this.writeToLocalStorage, this);
   },
   
-  // from ampersand todomvc
+  
+  
+  // from ampersand todomvc*********************
   saveToLocalStorage: function() {
     localStorage[STORAGE_KEY] = JSON.stringify(this);
   },

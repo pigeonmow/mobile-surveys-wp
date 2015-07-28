@@ -15,7 +15,19 @@ var State = require('ampersand-state');
 module.exports = State.extend({
   
   props: {
-    questionNumber: ['number', 'true', ''],
+    questionNumber: {
+      type: 'number',
+      // closure- module pattern to auto increment the mainIndex: questionNumber property
+      default: (function() {
+        var myNumber = 0;
+        
+        return function() {
+          myNumber += 1;
+          
+          return myNumber;
+        }
+      }())
+    },
     query: ['string', true, ''],
     info: ['string', false, ''],
    	//choice: ['string',true, ''], 
@@ -37,6 +49,15 @@ module.exports = State.extend({
       type: 'boolean',
       default: true
     }
-  }
+  },
   
+/*  derived: {
+    currentQuestion: {
+      deps: ['questionNumber'],
+      fn: function() {
+        return survey.get(this.currentQuestion);
+      }
+    }
+  }*/
+    
 });
