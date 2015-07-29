@@ -5,7 +5,8 @@
 'use strict';
 var React = require('react');
 var QuestionView = require('./components/question');
-//var Query = require('./components/query');
+var Query = require('./components/query');
+var Info = require('./components/info');
 var ampersandMixin = require('ampersand-react-mixin');
 
 module.exports = React.createClass({
@@ -38,7 +39,8 @@ module.exports = React.createClass({
     return (
       <fieldset>
         <legend>Questions will display here</legend>
-
+        <Query survey={this.props.survey} />
+        <Info survey={this.props.survey} />
         <QuestionView survey={this.props.survey} choices={this.state.choices} />
 
       </fieldset>

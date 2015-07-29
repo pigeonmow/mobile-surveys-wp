@@ -8,6 +8,7 @@ var UserName = require('./components/user-name');
 var SurveyTitle = require('./components/survey-title');
 var QuestionContainer = require('./question-container');
 var Instructions = require('./components/instructions');
+var ampersandMixin = require('ampersand-react-mixin');
 // React - nice to have html5 in here to see in context - trade off seperation
 // of concerns - is it seperate?? View - describes DOM interaction & stuff...
 // emit change events here - top level component which is stateful & goes
@@ -16,6 +17,7 @@ var Instructions = require('./components/instructions');
 module.exports = React.createClass({
   //name to show in React devtools extension
   displayName: 'CreateSurvey',
+  mixins: [ampersandMixin],
   
   render: function() {
 
