@@ -57,34 +57,20 @@ module.exports = React.createClass({
   },
   
   
-  // method to add a new empty question
-  onSaveClick: function() {
-    // alert('new question'); // test purposes
-    // save the current question to the current model
-    // this may already be implemented I think...yes it happens when you type
-        this.props.survey.add({});
-    // so just need to render the new question into this container
-    // which I think is just setting the state
-    
-    var lastQuestion = this.props.survey.length;
-    // add next empty question model
 
-    var newChoices = this.props.survey.get(lastQuestion).choices;
-    this.replaceState({ choices: newChoices });
-  },
   
   render: function() {
     var lastQuestion = this.props.survey.length;
-   // console.log(this.props.survey.get(1));
-   // console.log(lastQuestion);
-
+    console.log('model');
     console.log(this.props.survey.get(lastQuestion).choices);
 
     // this is the ACTUAL array in the model - stays empty
    // console.log(this.props.survey.get(1).choices);
     // this is the array currently IN STATE - choices add/remove into/from this one when buttons' clicked
+    console.log('state');
     console.log(this.state.choices);
-
+    console.log('props');
+    console.log(this.props.choices);
     return (
       <fieldset>
         Test question...
@@ -96,9 +82,7 @@ module.exports = React.createClass({
           <button type='button' onClick={this.onDeleteChoice}>
             Delete Choice</button>
       <fieldset>
-              <button type='button' onClick={this.onSaveClick}>
-          Save Current & Add New Question
-        </button>
+
       </fieldset>
       </fieldset>
     );

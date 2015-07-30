@@ -1,4 +1,4 @@
-/* Question Container React Component - question-view.js
+/* Question Container React Component - question-container.js
  * 01/07/2015
  * Author: Matthew Moss
  */
@@ -32,17 +32,36 @@ module.exports = React.createClass({
       text: ''
     };
   },
+  
+    // method to add a new empty question
+  onSaveClick: function() {
+    // alert('new question'); // test purposes
+    // save the current question to the current model
+    // this may already be implemented I think...yes it happens when you type
+        this.props.survey.add({});
+    // so just need to render the new question into this container
+    // which I think is just setting the state
+    
+    var lastQuestion = this.props.survey.length;
+    // add next empty question model
+
+    var newChoices = this.props.survey.get(lastQuestion).choices;
+    this.replaceState({ choices: newChoices });
+  },
 
   
   render: function() {
-    //console.log(this.state.choices);
+    var lastQuestion = this.props.survey.length;
+
     return (
       <fieldset>
         <legend>Questions will display here</legend>
         <Query survey={this.props.survey} />
         <Info survey={this.props.survey} />
-        <QuestionView survey={this.props.survey} choices={this.state.choices} />
-
+        <QuestionView key={this.state.text} survey={this.props.survey} choices={this.state.choices} />
+              <button type='button' onClick={this.onSaveClick}>
+          Save Current & Add New Question
+        </button>
       </fieldset>
     );
   }
