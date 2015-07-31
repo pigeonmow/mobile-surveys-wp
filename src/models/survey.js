@@ -32,7 +32,7 @@ module.exports = Collection.extend({
     this.saveToLocalStorage = debounce(this.saveToLocalStorage, 100);
     
     //listen for changes to the collection & save when it does
-    this.on('all', this.writeToLocalStorage, this);
+    this.on('all', this.saveToLocalStorage, this);
   },
   
   
