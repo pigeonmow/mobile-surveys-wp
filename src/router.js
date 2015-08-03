@@ -8,6 +8,7 @@ var React = require('react');
 var MainView = require('./main-view');
 var HomePage = require('./views/home');
 var CreateSurvey = require('./views/create-survey');
+var Preview = require('./views/preview');
 // Uses ampersand-router module
 //dealing with urls on the clientside: create code that handles & renders
 //page from the 200.html catchall file
@@ -46,11 +47,12 @@ module.exports = Router.extend({
   routes: {
     '': 'home',
     'create': 'create',
+    'preview': 'preview'
   },
 //create the handlers
-/*  preview: function() {
-    this.renderView(<Preview />);
-  },*/
+  preview: function() {
+    this.renderView(<Preview user={app.user} />);
+  },
                     
   home: function () {
     // layout false on this one removes the NAV using an object rather than
