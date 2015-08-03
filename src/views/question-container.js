@@ -137,6 +137,7 @@ module.exports = React.createClass({
 
   },
   
+
   
   render: function() {
     var lastQuestion = this.props.survey.length;
@@ -191,6 +192,8 @@ module.exports = React.createClass({
         </div>
       );
     }
+    
+
     
     return (
       <div>
