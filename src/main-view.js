@@ -35,6 +35,7 @@ module.exports = React.createClass({
           <label htmlFor='menu-toggle'>Menu</label>
           <ul className='list-unstyled list-inline cf'>
             <li><a href='/'>Home</a></li>
+            <li><a href='create'>Create Survey</a></li>
             <li><a href='preview'>Preview Survey</a></li>
             <li className='pull-right'><a href='/'>Logout</a></li>
           </ul>
