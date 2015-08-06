@@ -26,7 +26,7 @@ module.exports = React.createClass({
         <UserName user={this.props.user} />
         <SurveyTitle user={this.props.user} />
         <Instructions user={this.props.user} />
-        <QuestionContainer survey={this.props.user.survey} />
+        <QuestionContainer user={this.props.user} survey={this.props.user.survey} />
       </div>
     );
   }

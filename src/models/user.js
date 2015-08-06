@@ -31,7 +31,18 @@ module.exports = State.extend({
     editInstructions: {
       type: 'boolean',
       default: true
-    }
+    },
+    
+    editQuery: {
+      type: 'boolean',
+      default: true
+    },
+
+    editInfo: {
+      type: 'boolean',
+      default: true
+    }   
+
   },
   
   collections: {

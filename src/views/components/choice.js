@@ -13,7 +13,7 @@ module.exports = React.createClass({
     var createChoice = function(choiceElement, index) {
       return (
         <li key={index + choiceElement}>
-          Choice index:
+          Choice Number:
           {index}
           <input type='radio' name='answer-choice' />
           {choiceElement}

@@ -5,12 +5,10 @@
 'use strict';
 var React = require('react');
 var Choice = require('./components/choice');
-var ampersandMixin = require('ampersand-react-mixin');
-
+// this file needs refactoring into seperate components with individual concerns
 module.exports = React.createClass({
   displayName: 'QuestionContainer',
-  mixins: [ampersandMixin],
-  // start with empty text string - choices is an array of strings
+  
   getInitialState: function() {
     var lastQuestion = this.props.survey.length;
     var choices;
@@ -18,82 +16,25 @@ module.exports = React.createClass({
     if (typeof this.props.survey.get(lastQuestion) != 'undefined') {
       // if they do set the last one's choices to choices var
       choices = this.props.survey.get(lastQuestion).choices;
+      //alert('already exists!');
     } else {
       // if not create a new question model & set its choices to choices var
-      app.user.survey.add({ });
+      this.props.survey.add({ });
       var lastQuestion = app.user.survey.length;
       choices = app.user.survey.get(lastQuestion).choices;
+      //alert('added one for ya!');
     }
-
+    
     return {
+      query: '',
+      info: '',
       choices: choices,
-      text: '',
-      query: this.props.survey.get(lastQuestion).query,
-      info: this.props.survey.get(lastQuestion).info
-    };
+      text: ''
+    }
   },
-
-  // handlers
-  onQueryChange: function(event) {
-    this.setState({
-      query: event.target.value
-    });
-  },
-
-  // method to add a new empty question
-  onSaveQuestionClick: function() {
-    // alert('new question'); // test purposes
-    // save the current question to the current model
-    // this may already be implemented I think...yes it happens when you type
-    this.props.survey.add({});
-    // so just need to render the new question into this container
-    // which I think is just setting the state
-    var lastQuestion = this.props.survey.length;
-    // add next empty question model
-    var newChoices = this.props.survey.get(lastQuestion).choices;
-    this.replaceState({choices: newChoices});
-  },
-
-  //save button
-  onQuerySubmit: function(event) {
-    event.preventDefault();
-    //alert('just checking!'); // testing
-    var lastQuestion = this.props.survey.length;
-    var currentQuestion = this.props.survey.get(lastQuestion);
-    currentQuestion.query = this.state.query;
-    currentQuestion.editQuery = false;
-  },
-
-  // edit button
-  onEditQueryClick: function(event) {
-    event.preventDefault();
-    var lastQuestion = this.props.survey.length;
-    // alert('editing'); // for testing
-    this.props.survey.get(lastQuestion).editQuery = true;
-  },
-
-  onInfoChange: function(event) {
-    this.setState({
-      info: event.target.value
-    });
-  },
-
-  onInfoSubmit: function(event) {
-    event.preventDefault();
-    var lastQuestion = this.props.survey.length;
-    var currentQuestion = this.props.survey.get(lastQuestion);
-    currentQuestion.info = this.state.info;
-    currentQuestion.editInfo = false;
-  },
-
-  onEditInfoClick: function(event) {
-    event.preventDefault();
-    var lastQuestion = this.props.survey.length;
-    this.props.survey.get(lastQuestion).editInfo = true;
-  },
-
-  // when you type state updates
-  onChange: function(event) {
+  // multiple choice question stuff
+  // start with empty text string - choices is an array of strings
+  onTextChange: function(event) {
     this.setState({text: event.target.value});
   },
   // when button is clicked Array.concat() creates & returns new array with
@@ -108,14 +49,12 @@ module.exports = React.createClass({
     var nextText = '';
     this.setState({choices: nextChoices, text: nextText});
   },
-
-  // remove a choice - currently from start of array - needs updating to ask
-  // user which choice they wish to remove***this is done BUT if user does not
+  // remove a choice - BUT if user does not
   // enter a number it still deletes choice at index zero - needs fixing*******
   // using Array.splice()
   onDeleteChoice: function(index) {
     var lastQuestion = this.props.survey.length;
-    var index = prompt('Please enter the choice index to delete');
+    var index = prompt('Please enter the answer choice number to delete');
     // if user enters an index delete that one
     if (index != null) {
       // copy array
@@ -129,13 +68,70 @@ module.exports = React.createClass({
     }
     // if they click cancel - do nothing
   },
+  // Query field stuff
+  // handlers
+  onQueryChange: function(event) {
+    this.setState({
+      query: event.target.value
+    });
+  },
+  //save button
+  onQuerySubmit: function(event) {
+    event.preventDefault();
+    var lastQuestion = this.props.survey.length;
+    var currentQuestion = this.props.survey.get(lastQuestion);
+    currentQuestion.query = this.state.query;
+    this.props.user.editQuery = false;
+  },
+  // edit button
+  onEditQueryClick: function(event) {
+    event.preventDefault();
+    //var lastQuestion = this.props.survey.length;
+    // alert('editing'); // for testing
+    this.props.user.editQuery = true;
+  },
+  // Info field stuff
+  onInfoChange: function(event) {
+    this.setState({
+      info: event.target.value
+    });
+  },
 
+  onInfoSubmit: function(event) {
+    event.preventDefault();
+    var lastQuestion = this.props.survey.length;
+    var currentQuestion = this.props.survey.get(lastQuestion);
+    currentQuestion.info = this.state.info;
+    this.props.user.editInfo = false;
+  },
+
+  onEditInfoClick: function(event) {
+    event.preventDefault();
+    //var lastQuestion = this.props.survey.length;
+    this.props.user.editInfo = true;
+  },
+  // Save & New buttons
+  onSaveQuestionClick: function() {
+    alert('Saving!');
+  },
+  
+  onNewQuestionClick: function() {
+    alert('Newing!');
+    // add a new empty question model to the collection
+    this.props.survey.add({});
+    // make the new question the current state
+    var lastQuestion = this.props.survey.length;
+    var newChoices = this.props.survey.get(lastQuestion).choices;
+    this.replaceState({choices: newChoices});
+    this.props.user.editQuery = true;
+    this.props.user.editInfo = true;
+  },
+  
   render: function() {
     var lastQuestion = this.props.survey.length;
     // Query field
     var queryContent;
-
-    if (this.props.survey.get(lastQuestion).editQuery === true) {
+    if (this.props.user.editQuery === true) {
       // Edit mode
       queryContent = (
         <form onSubmit={this.onQuerySubmit}>
@@ -153,7 +149,7 @@ module.exports = React.createClass({
       // display mode
       queryContent = (
         <div>
-          <span>{this.props.survey.get(lastQuestion).query}</span>
+         <span>{this.props.survey.get(lastQuestion).query}</span>
           <span>
             <button onClick={this.onEditQueryClick} type='button'>
               Edit
@@ -162,11 +158,9 @@ module.exports = React.createClass({
         </div>
       );
     }
-
     // Info field
     var infoContent;
-
-    if (this.props.survey.get(lastQuestion).editInfo === true) {
+    if (this.props.user.editInfo === true) {
       infoContent = (
         <form onSubmit={this.onInfoSubmit}>
           <fieldset>
@@ -184,7 +178,6 @@ module.exports = React.createClass({
         </div>
       );
     }
-
     return (
       <div>
         <legend>Questions will display here</legend>
@@ -192,7 +185,7 @@ module.exports = React.createClass({
         {infoContent}
         <div>
           <Choice choices={this.state.choices} />
-          <input onChange={this.onChange} value={this.state.text} />
+          <input onChange={this.onTextChange} value={this.state.text} />
           <button type='button' onClick={this.onAddChoice}>Add Choice</button>
           <button type='button' onClick={this.onDeleteChoice}>
             Delete Choice
@@ -201,7 +194,7 @@ module.exports = React.createClass({
         <button type='button' onClick={this.onSaveQuestionClick}>
           Save Question
         </button>
-        <button type='button' >
+        <button type='button' onClick={this.onNewQuestionClick}>
           New Question
         </button>
       </div>

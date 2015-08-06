@@ -38,7 +38,7 @@ module.exports = State.extend({
   },
   
   // usure if needed
-  session: {
+/*  session: {
 
     editQuery: {
       type: 'boolean',
@@ -49,7 +49,7 @@ module.exports = State.extend({
       type: 'boolean',
       default: true
     }
-  },
+  },*/
   
 /*  derived: {
     currentQuestion: {
