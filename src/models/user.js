@@ -43,7 +43,12 @@ module.exports = State.extend({
     editInfo: {
       type: 'boolean',
       default: true
-    }   
+    },
+    
+    editChoices: {
+      type: 'boolean',
+      default: true
+    }
 
   },
   

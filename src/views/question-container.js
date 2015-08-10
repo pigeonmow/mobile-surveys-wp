@@ -112,7 +112,13 @@ module.exports = React.createClass({
   },
   // Save & New buttons
   onSaveQuestionClick: function() {
-    alert('Saving!');
+   // alert('Saving!');
+    this.props.user.editChoices = false;
+  },
+  
+  onEditChoicesClick: function(event) {
+    event.preventDefault();
+    this.props.user.editChoices = true;
   },
   
   onNewQuestionClick: function() {
@@ -130,6 +136,8 @@ module.exports = React.createClass({
   
   render: function() {
     var lastQuestion = this.props.survey.length;
+    // question number for display
+    var currentQuestion = this.props.survey.get(lastQuestion).questionNumber;
     // Query field
     var queryContent;
     if (this.props.user.editQuery === true) {
@@ -181,12 +189,11 @@ module.exports = React.createClass({
         </fieldset>
       );
     }
-    return (
-      <div className='grid-flex-cell'>
-        <legend>Questions will display here</legend>
-        {queryContent}
-        {infoContent}
-        <div>
+    // multiple choice question view
+    var choicesContent;
+    if (this.props.user.editChoices === true) {
+      choicesContent = (
+                <div>
           <Choice choices={this.state.choices} />
           <label htmlFor='answer-text'>Enter answer choice</label>
           <input type='text' onChange={this.onTextChange} value={this.state.text} id='answer-text' className='form-input'/>
@@ -197,6 +204,23 @@ module.exports = React.createClass({
           </button>
           </div>
         </div>
+    );
+    } else {
+      choicesContent = (
+      <fieldset>
+        <Choice choices={this.state.choices} />
+          <button onClick={this.onEditChoicesClick} type='button' className='button pull-right'>Edit</button>
+      </fieldset>
+    );
+    }
+  
+    return (
+      <div className='grid-flex-cell'>
+        <legend>Questions will display here</legend>
+        <span>Question {currentQuestion}</span>
+        {queryContent}
+        {infoContent}
+        {choicesContent}
         <div className='button-group pull-right'>
         <button type='button' onClick={this.onSaveQuestionClick} className='button'>
           Save Question
