@@ -16,18 +16,18 @@ module.exports = Collection.extend({
   model: Question,
   
   // have this collection watch itself & persist to local storage when anything changes - nice & simple (from todomvc as well):
-  //initialize: function() {
+  initialize: function() {
     
 
     // see what's already there
- /*   this.readFromLocalStorage();
+    this.readFromLocalStorage();
     
     // put a debounce on- postpones execution for specified milliseconds
     this.saveToLocalStorage = debounce(this.saveToLocalStorage, 100);
     
     //listen for changes to the collection & save when it does
     this.on('all', this.saveToLocalStorage, this);
-  },*/
+  },
   
   
   

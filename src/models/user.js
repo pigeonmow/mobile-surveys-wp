@@ -60,10 +60,10 @@ module.exports = State.extend({
     localStorage[TITLE_STORAGE_KEY] = JSON.stringify(this.surveyTitle);
   },
   
-  savetInstructionsToLocalStorage: function() {
+  saveInstructionsToLocalStorage: function() {
     localStorage[INSTRUCTIONS_STORAGE_KEY] = JSON.stringify(this.instructions);
   },
-  
+  // include this on initialization?? 
 /*  readFromLocalStorage: function() {
     var existingData = localStorage[STORAGE_KEY];
     

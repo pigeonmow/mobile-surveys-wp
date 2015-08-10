@@ -116,7 +116,8 @@ module.exports = React.createClass({
   },
   
   onNewQuestionClick: function() {
-    alert('Newing!');
+    //alert('Newing!');
+    // need validation of current Q data
     // add a new empty question model to the collection
     this.props.survey.add({});
     // make the new question the current state
