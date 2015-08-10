@@ -30,7 +30,8 @@ module.exports = React.createClass({
 
   onSubmit: function(event) {
     event.preventDefault();
-    this.props.user.instructions = this.state.instructions
+    this.props.user.instructions = this.state.instructions;
+    this.props.user.savetInstructionsToLocalStorage(this.props.user.instructions);
     this.props.user.editInstructions = false;
   },
   

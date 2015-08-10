@@ -28,7 +28,7 @@ module.exports = React.createClass({
     // save to the instance of the user model firstly
     this.props.user.userName = this.state.userName;
     // save userName prop to localStorage
-    //this.props.user.saveToLocalStorage();
+    this.props.user.saveUserToLocalStorage(this.props.user.userName);
     this.props.user.editUserName = false;
   },
   

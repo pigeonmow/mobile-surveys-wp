@@ -5,7 +5,9 @@
 'use strict';
 var State = require('ampersand-state');
 var Survey = require('./survey');
-var STORAGE_KEY = 'survey-data';
+var USER_STORAGE_KEY = 'user-data';
+var TITLE_STORAGE_KEY = 'title-data';
+var INSTRUCTIONS_STORAGE_KEY = 'instructions-data';
 // essentially app state...
 module.exports = State.extend({
     // stuff expected from server & to persist back to server
@@ -49,19 +51,25 @@ module.exports = State.extend({
     survey: Survey
   },
   
-    // from ampersand todomvc
-  // this saves ALL props above AND survey collection to local storage with the key defined: survey-data
-  // possible soln: pass 'this.props' as argument into 'stringify()' method...?
-  saveToLocalStorage: function() {
-    localStorage[STORAGE_KEY] = JSON.stringify(this);
+    // based on ampersand todomvc
+  saveUserToLocalStorage: function() {
+    localStorage[USER_STORAGE_KEY] = JSON.stringify(this.userName);
   },
   
-  readFromLocalStorage: function() {
+  saveTitleToLocalStorage: function() {
+    localStorage[TITLE_STORAGE_KEY] = JSON.stringify(this.surveyTitle);
+  },
+  
+  savetInstructionsToLocalStorage: function() {
+    localStorage[INSTRUCTIONS_STORAGE_KEY] = JSON.stringify(this.instructions);
+  },
+  
+/*  readFromLocalStorage: function() {
     var existingData = localStorage[STORAGE_KEY];
     
     if (existingData) {
       this.set(JSON.parse(existingData));
     }
-  }
+  }*/
   
 });

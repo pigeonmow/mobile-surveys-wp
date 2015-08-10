@@ -28,7 +28,7 @@ module.exports = React.createClass({
     // save to the instance of the user model firstly
     this.props.user.surveyTitle = this.state.surveyTitle;
     // save userName prop to localStorage
-    //this.props.user.saveToLocalStorage();
+    this.props.user.saveTitleToLocalStorage(this.props.user.surveyTitle);
     this.props.user.editSurveyTitle = false;
   },
   
