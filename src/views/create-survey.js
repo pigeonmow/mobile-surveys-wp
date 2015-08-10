@@ -22,10 +22,12 @@ module.exports = React.createClass({
   render: function() {
 
     return (
-      <div>
-        <UserName user={this.props.user} />
-        <SurveyTitle user={this.props.user} />
-        <Instructions user={this.props.user} />
+      <div className='grid-flex-container'>
+        <div className='grid-flex-cell grid-flex-cell-1of3'>
+          <UserName user={this.props.user} />
+          <SurveyTitle user={this.props.user} />
+          <Instructions user={this.props.user} />
+        </div>
         <QuestionContainer user={this.props.user} survey={this.props.user.survey} />
       </div>
     );

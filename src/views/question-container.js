@@ -138,8 +138,8 @@ module.exports = React.createClass({
           <fieldset>
             <legend>Query</legend>
             <input type='text' name='query' value={this.state.query}
-              onChange={this.onQueryChange} />
-            <button type='submit'>
+              onChange={this.onQueryChange} className='form-input'/>
+            <button type='submit' className='button'>
               Save
             </button>
           </fieldset>
@@ -148,14 +148,15 @@ module.exports = React.createClass({
     } else {
       // display mode
       queryContent = (
-        <div>
+        <fieldset>
+          <legend>Query</legend>
          <span>{this.props.survey.get(lastQuestion).query}</span>
           <span>
-            <button onClick={this.onEditQueryClick} type='button'>
+            <button onClick={this.onEditQueryClick} type='button' className='button pull-right'>
               Edit
             </button>
           </span>
-        </div>
+        </fieldset>
       );
     }
     // Info field
@@ -165,38 +166,44 @@ module.exports = React.createClass({
         <form onSubmit={this.onInfoSubmit}>
           <fieldset>
             <legend>Question Info</legend>
-            <textarea value={this.state.info} onChange={this.onInfoChange} />
-            <button type='submit'>Save</button>
+            <textarea value={this.state.info} onChange={this.onInfoChange} className='form-input'/>
+            <button type='submit' className='button'>Save</button>
           </fieldset>
         </form>
       );
     } else {
       infoContent = (
-        <div>
+        <fieldset>
+          <legend>Question Info</legend>
           <span>{this.props.survey.get(lastQuestion).info}</span>
-          <button onClick={this.onEditInfoClick} type='button'>Edit</button>
-        </div>
+          <button onClick={this.onEditInfoClick} type='button' className='button pull-right'>Edit</button>
+        </fieldset>
       );
     }
     return (
-      <div>
+      <div className='grid-flex-cell'>
         <legend>Questions will display here</legend>
         {queryContent}
         {infoContent}
         <div>
           <Choice choices={this.state.choices} />
-          <input onChange={this.onTextChange} value={this.state.text} />
-          <button type='button' onClick={this.onAddChoice}>Add Choice</button>
-          <button type='button' onClick={this.onDeleteChoice}>
+          <label htmlFor='answer-text'>Enter answer choice</label>
+          <input type='text' onChange={this.onTextChange} value={this.state.text} id='answer-text' className='form-input'/>
+          <div className='button-group'>
+          <button type='button' onClick={this.onAddChoice} className='button'>Add Choice</button>
+          <button type='button' onClick={this.onDeleteChoice} className='button'>
             Delete Choice
           </button>
+          </div>
         </div>
-        <button type='button' onClick={this.onSaveQuestionClick}>
+        <div className='button-group pull-right'>
+        <button type='button' onClick={this.onSaveQuestionClick} className='button'>
           Save Question
         </button>
-        <button type='button' onClick={this.onNewQuestionClick}>
+        <button type='button' onClick={this.onNewQuestionClick} className='button'>
           New Question
         </button>
+        </div>
       </div>
     );
   }

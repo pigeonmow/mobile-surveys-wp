@@ -48,8 +48,8 @@ var content;
           <fieldset>
         <legend>Survey title</legend>
             <input type='text' value={this.state.surveyTitle}
-              onChange={this.onSurveyTitleChange} name='survey-title' />
-            <button type='submit'>
+              onChange={this.onSurveyTitleChange} name='survey-title' className='form-input' />
+            <button type='submit' className='button'>
                     Save
             </button>
           </fieldset>
@@ -58,14 +58,16 @@ var content;
     } else {
       // display mode
       content = (
-        <div>
+        <fieldset>
+        <legend>Survey title</legend>
+
           <span>{this.props.user.surveyTitle}</span>
           <span>
-            <button type='button' onClick={this.onEditClick}>
+            <button type='button' onClick={this.onEditClick} className='button pull-right'>
                   Edit
             </button>
           </span>
-        </div>
+        </fieldset>
       );
     }
 

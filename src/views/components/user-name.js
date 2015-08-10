@@ -49,8 +49,8 @@ module.exports = React.createClass({
           <fieldset>
             <legend>User name</legend>
             <input type='text' value={this.state.userName}
-              onChange={this.onUserNameChange} name='user' />
-            <button type='submit'>
+              onChange={this.onUserNameChange} name='username' className='form-input'/>
+            <button type='submit' className='button'>
                     Save
             </button>
           </fieldset>
@@ -59,14 +59,15 @@ module.exports = React.createClass({
     } else {
       // display mode
       content = (
-        <div>
+        <fieldset>
+          <legend>User name</legend>
           <span>{this.props.user.userName}</span>
           <span>
-            <button type='button' onClick={this.onEditClick}>
+            <button type='button' onClick={this.onEditClick} className='button pull-right'>
                   Edit
             </button>
           </span>
-        </div>
+        </fieldset>
       );
     }
 

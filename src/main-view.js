@@ -30,7 +30,7 @@ module.exports = React.createClass({
 
     return (
       <LinkHelper>
-        <nav className='top-nav top-nav-dark cf' role='navigation'>
+        <nav className='top-nav top-nav-light cf' role='navigation'>
           <input id='menu-toggle' className='menu-toggle' type='checkbox'/>
           <label htmlFor='menu-toggle'>Menu</label>
           <ul className='list-unstyled list-inline cf'>

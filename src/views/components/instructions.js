@@ -43,8 +43,8 @@ module.exports = React.createClass({
         <form onSubmit={this.onSubmit}>
           <fieldset>
         <legend>Respondent instructions</legend>
-            <textarea value={this.state.instructions} onChange={this.onInstructionsChange} name='instructions' />
-            <button type='submit'>
+            <textarea value={this.state.instructions} onChange={this.onInstructionsChange} name='instructions' className='form-input'/>
+            <button type='submit' className='button'>
                     Save
             </button>
           </fieldset>
@@ -53,14 +53,15 @@ module.exports = React.createClass({
     } else {
       // display mode
       content = (
-        <div>
+        <fieldset>
+          <legend>Respondent instructions</legend>
           <span>{this.props.user.instructions}</span>
           <span>
-            <button type='button' onClick={this.onEditClick}>
+            <button type='button' onClick={this.onEditClick} className='button pull-right'>
                   Edit
             </button>
           </span>
-        </div>
+        </fieldset>
       );
     }
       return (
