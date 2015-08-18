@@ -27,6 +27,8 @@ module.exports = React.createClass({
       this.setState(
         {progress: 'question'}
       );
+      // at this point need logic to step through questions - 
+      // see in question.js component --- 
     } else if (this.state.progress === 'question') {
       this.setState(
         {progress: 'respondent'}

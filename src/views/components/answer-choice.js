@@ -18,6 +18,7 @@ module.exports = React.createClass({
         </li>
       );
     };
+    
     return (
       <div>
       <ul>{this.props.choices.map(createChoice)}</ul>
