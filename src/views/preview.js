@@ -21,31 +21,54 @@ module.exports = React.createClass({
     }
   },
   
+  myfunction: (function(event) {
+    var qNum = 0;
+
+
+    return function() {
+      qNum += 1;
+      return qNum;
+    }
+      
+  }()),
+  
   onNextClick: function(event) {
+    var qNum = this.myfunction();
+
+ // console.log(this.props.user.survey.get(qNum).questionNumber);
+   
     //alert('click next you did! & nothing happened...yet');
     if (this.state.progress === 'start') {
       this.setState(
         {progress: 'question'}
       );
       // at this point need logic to step through questions - 
-      // see in question.js component --- 
+      // see in question.js component --- need to use survey.length to determine
+      // the end! - maybe ternery in here...?
     } else if (this.state.progress === 'question') {
-      this.setState(
-       {progress: 'question'}
-    );
+
+      // here's my problem because currentQuestion is staying at 1 
+      var currentQuestion = this.props.user.survey.get(qNum).questionNumber;
+      currentQuestion === this.props.user.survey.length ? 
+        this.setState(
+          {progress: 'respondent'}
+        ) :
+        this.setState(
+          {progress: 'question'}
+        );
 
     } else if (this.state.progress === 'respondent') {
       this.setState(
         {progress: 'complete'}
       );
     }
+
   },
   
 
 
 
   render: function() {
-    //console.log(this.props.user.survey);  
     var currentScreen;
     if (this.state.progress === 'start') {
       currentScreen = (
@@ -53,10 +76,7 @@ module.exports = React.createClass({
       );
     } else if (this.state.progress === 'question') {
       currentScreen = (
-        <div>
-
         <Question user={this.props.user} />
-        </div>
       );
     } else if (this.state.progress === 'respondent') {
       currentScreen = (
@@ -70,6 +90,8 @@ module.exports = React.createClass({
       
     return (
       <div>
+
+
         <h2>Your survey will look like this...</h2>
         <form>
           <div>

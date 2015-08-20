@@ -21,7 +21,7 @@ module.exports = React.createClass({
   // question view - what's more logical??
   // plus of course, need to get it so ir renders the questions - not just 
   // console.log! 
-  myfunction: (function(event) {
+  getQuery: (function(event) {
     var qNum = 0;
     console.log(qNum);
     console.log('outer!');
@@ -31,8 +31,31 @@ module.exports = React.createClass({
       console.log(qNum);
       console.log('inner!')
       console.log(this.props.user.survey.get(qNum).query);
-      var currentQuestion = this.props.user.survey.get(qNum).query;
-      return currentQuestion;
+      var currentQuery = this.props.user.survey.get(qNum).query;
+      var currentInfo = this.props.user.survey.get(qNum).info;
+      return currentQuery;
+    }
+      
+  }()),
+  
+  getInfo: (function(event) {
+    var qNum = 0;
+
+    return function() {
+      qNum += 1;
+      var currentInfo = this.props.user.survey.get(qNum).info;
+      return currentInfo;
+    }
+      
+  }()),
+  
+  getChoices: (function(event) {
+    var qNum = 0;
+
+    return function() {
+      qNum += 1;
+      var currentChoices = this.props.user.survey.get(qNum).choices;
+      return currentChoices;
     }
       
   }()),
@@ -40,12 +63,13 @@ module.exports = React.createClass({
   
   render: function() {
     console.log(this.props.user.survey.length);
-    var currentQuestion = currentQuestion;
-    return (
-      <div>
-        {currentQuestion}
-        {this.myfunction()}
 
+
+    return (
+      <div className='question'>
+        {this.getQuery()}
+        {this.getInfo()}
+        {this.getChoices()}
       </div>
     );
   }

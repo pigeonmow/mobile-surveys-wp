@@ -11,7 +11,7 @@ module.exports = React.createClass({
   render: function() {
     
     return (
-      <div>
+      <div className='thanks'>
         <h2>Thank you!</h2>
           <button type='button'>Submit Your Answers</button>
       </div>

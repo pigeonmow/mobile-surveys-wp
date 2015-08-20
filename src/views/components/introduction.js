@@ -11,7 +11,7 @@ module.exports = React.createClass({
   render: function() {
     
     return (
-      <div>
+      <div className='survey-introduction'>
         <h1>Intro Time</h1>
       </div>
     );
