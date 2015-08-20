@@ -21,7 +21,7 @@ module.exports = React.createClass({
     }
   },
   
-  onNextClick: function() {
+  onNextClick: function(event) {
     //alert('click next you did! & nothing happened...yet');
     if (this.state.progress === 'start') {
       this.setState(
@@ -31,8 +31,9 @@ module.exports = React.createClass({
       // see in question.js component --- 
     } else if (this.state.progress === 'question') {
       this.setState(
-        {progress: 'respondent'}
-      );
+       {progress: 'question'}
+    );
+
     } else if (this.state.progress === 'respondent') {
       this.setState(
         {progress: 'complete'}
@@ -40,27 +41,7 @@ module.exports = React.createClass({
     }
   },
   
-    //another closure, I think --- is it module pattern??
-  // so far so good - needs something for when it reaches end of questions...
-  // also where will this function live - the actual 'NEXT' button is in
-  // preview.js - should this be or should the button relocate here to the 
-  // question view - what's more logical??
-  // plus of course, need to get it so ir renders the questions - not just 
-  // console.log! 
-  myfunction: (function(event) {
-    var qNum = 0;
-    console.log(qNum);
-    console.log('outer!');
 
-    return function() {
-      qNum += 1;
-      console.log(qNum);
-      console.log('inner!')
-      console.log(this.props.user.survey.get(qNum).query);
-      //return qNum;
-    }
-      
-  }()),
 
 
   render: function() {
@@ -72,7 +53,10 @@ module.exports = React.createClass({
       );
     } else if (this.state.progress === 'question') {
       currentScreen = (
+        <div>
+
         <Question user={this.props.user} />
+        </div>
       );
     } else if (this.state.progress === 'respondent') {
       currentScreen = (
@@ -92,7 +76,7 @@ module.exports = React.createClass({
             Something, something, something else...
               {currentScreen}
           <button type='button'>Save for later</button>
-            <button type='button' onClick={this.myfunction}>Next</button>
+            <button type='button' onClick={this.onNextClick}>Next</button>
           </div>
 
         </form>

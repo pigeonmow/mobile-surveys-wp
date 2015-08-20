@@ -14,16 +14,37 @@ var AnswerChoice = require('./answer-choice');
 module.exports = React.createClass({
   displayName: 'Question',
   
+    //another closure, I think --- is it module pattern??
+  // so far so good - needs something for when it reaches end of questions...
+  // also where will this function live - the actual 'NEXT' button is in
+  // preview.js - should this be or should the button relocate here to the 
+  // question view - what's more logical??
+  // plus of course, need to get it so ir renders the questions - not just 
+  // console.log! 
+  myfunction: (function(event) {
+    var qNum = 0;
+    console.log(qNum);
+    console.log('outer!');
 
+    return function() {
+      qNum += 1;
+      console.log(qNum);
+      console.log('inner!')
+      console.log(this.props.user.survey.get(qNum).query);
+      var currentQuestion = this.props.user.survey.get(qNum).query;
+      return currentQuestion;
+    }
+      
+  }()),
 
   
   render: function() {
     console.log(this.props.user.survey.length);
-
+    var currentQuestion = currentQuestion;
     return (
       <div>
-
-        <p>{this.props.user.survey.get(1).query}</p>
+        {currentQuestion}
+        {this.myfunction()}
 
       </div>
     );
