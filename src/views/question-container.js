@@ -6,6 +6,8 @@
 var React = require('react');
 var Choice = require('./components/choice');
 var Query = require('./components/query');
+var Info = require('./components/info');
+
 // this file needs refactoring into seperate components with individual concerns
 module.exports = React.createClass({
   displayName: 'QuestionContainer',
@@ -28,7 +30,7 @@ module.exports = React.createClass({
     
     return {
 
-      info: '',
+
       choices: choices,
       text: ''
     }
@@ -70,26 +72,7 @@ module.exports = React.createClass({
     // if they click cancel - do nothing
   },
 
-  // Info field stuff
-  onInfoChange: function(event) {
-    this.setState({
-      info: event.target.value
-    });
-  },
 
-  onInfoSubmit: function(event) {
-    event.preventDefault();
-    var lastQuestion = this.props.survey.length;
-    var currentQuestion = this.props.survey.get(lastQuestion);
-    currentQuestion.info = this.state.info;
-    this.props.user.editInfo = false;
-  },
-
-  onEditInfoClick: function(event) {
-    event.preventDefault();
-    //var lastQuestion = this.props.survey.length;
-    this.props.user.editInfo = true;
-  },
   // Save & New buttons
   onSaveQuestionClick: function() {
    // alert('Saving!');
@@ -119,27 +102,7 @@ module.exports = React.createClass({
     // question number for display
     var currentQuestion = this.props.survey.get(lastQuestion).questionNumber;
 
-    // Info field
-    var infoContent;
-    if (this.props.user.editInfo === true) {
-      infoContent = (
-        <form onSubmit={this.onInfoSubmit}>
-          <fieldset>
-            <legend>Question Info</legend>
-            <textarea value={this.state.info} onChange={this.onInfoChange} className='form-input'/>
-            <button type='submit' className='button'>Save</button>
-          </fieldset>
-        </form>
-      );
-    } else {
-      infoContent = (
-        <fieldset>
-          <legend>Question Info</legend>
-          <span>{this.props.survey.get(lastQuestion).info}</span>
-          <button onClick={this.onEditInfoClick} type='button' className='button pull-right'>Edit</button>
-        </fieldset>
-      );
-    }
+
     // multiple choice question view
     var choicesContent;
     if (this.props.user.editChoices === true) {
@@ -170,7 +133,7 @@ module.exports = React.createClass({
         <legend>Questions will display here</legend>
         <span>Question {currentQuestion}</span>
         <Query user={this.props.user} />
-        {infoContent}
+        <Info user={this.props.user} />
         {choicesContent}
         <div className='button-group pull-right'>
         <button type='button' onClick={this.onSaveQuestionClick} className='button'>
