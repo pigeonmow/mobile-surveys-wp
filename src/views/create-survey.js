@@ -19,6 +19,14 @@ module.exports = React.createClass({
   displayName: 'CreateSurvey',
   mixins: [ampersandMixin],
   
+  onClearStorageClick: function(event) {
+    var check = confirm('Are you sure you wish to delete the contents of local storage and start over?');
+    if (check === true) {
+      localStorage.clear();  
+     location.assign('/create');
+    }
+  },
+  
   render: function() {
 
     return (
@@ -29,7 +37,11 @@ module.exports = React.createClass({
           <Instructions user={this.props.user} />
         </div>
         <QuestionContainer user={this.props.user} survey={this.props.user.survey} />
+            <div>
+        <button type='button' onClick={this.onClearStorageClick}>Clear All Local Storage</button>
       </div>
+      </div>
+
     );
   }
 });

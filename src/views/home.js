@@ -21,6 +21,7 @@ module.exports = React.createClass({
   // render method
   render: function() {
     return (
+/*      <div>Icon made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>*/
       // className is a React specific thingy
       // but that's because that's the actual name on the element in the DOM
       // another is 'for' which becomes 'htmlFor'
@@ -29,7 +30,7 @@ module.exports = React.createClass({
           <h1>Mobile Surveys</h1>
         </header>
         <div className='grid-flex-cell'>
-           <img src='http://lorempixel.com/output/technics-q-c-480-480-4.jpg' className='avatar avatar-large avatar-rounded' />
+           <img src='../img/clipboard105.png' className='avatar avatar-large avatar-rounded' />
           <p>Welcome, here you can create Surveys!</p>
           <a className='link' onClick={this.onNewSurveyClick}>
             Create New Survey

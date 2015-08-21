@@ -34,7 +34,7 @@ module.exports = React.createClass({
           <input id='menu-toggle' className='menu-toggle' type='checkbox'/>
           <label htmlFor='menu-toggle'>Menu</label>
           <ul className='list-unstyled list-inline cf'>
-            <li><a href='/'>Home</a></li>
+            <li><a href='/'><img src='http://lorempixel.com/output/technics-q-c-480-480-4.jpg' className='avatar avatar-medium avatar-rounded' /></a></li>
             <li><a href='create'>Create Survey</a></li>
             <li><a href='preview'>Preview Survey</a></li>
             <li className='pull-right'><a href='/'>Logout</a></li>

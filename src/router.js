@@ -10,6 +10,7 @@ var MainView = require('./main-view');
 var HomePage = require('./views/home');
 var CreateSurvey = require('./views/create-survey');
 var Preview = require('./views/preview');
+var MessagePage = require('./views/message');
 /** 
  * Uses ampersand-router node module
  * dealing with urls on the clientside: create code that handles & renders
@@ -58,7 +59,8 @@ module.exports = Router.extend({
   routes: {
     '': 'home',
     'create': 'create',
-    'preview': 'preview'
+    'preview': 'preview',
+    '*fourOfour': 'fourOfour'
   },
 
   preview: function() {
@@ -71,5 +73,9 @@ module.exports = Router.extend({
   
   create: function () {
     this.renderView(<CreateSurvey user={app.user} />);
-  }
+  },
+
+  fourOfour: function() {
+    this.renderView(<MessagePage title='404 Not Found' body='Nothing to see here, sorry.' />)
+    }
 });
