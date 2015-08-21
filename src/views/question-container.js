@@ -5,6 +5,7 @@
 'use strict';
 var React = require('react');
 var Choice = require('./components/choice');
+var Query = require('./components/query');
 // this file needs refactoring into seperate components with individual concerns
 module.exports = React.createClass({
   displayName: 'QuestionContainer',
@@ -26,7 +27,7 @@ module.exports = React.createClass({
     }
     
     return {
-      query: '',
+
       info: '',
       choices: choices,
       text: ''
@@ -68,28 +69,7 @@ module.exports = React.createClass({
     }
     // if they click cancel - do nothing
   },
-  // Query field stuff
-  // handlers
-  onQueryChange: function(event) {
-    this.setState({
-      query: event.target.value
-    });
-  },
-  //save button
-  onQuerySubmit: function(event) {
-    event.preventDefault();
-    var lastQuestion = this.props.survey.length;
-    var currentQuestion = this.props.survey.get(lastQuestion);
-    currentQuestion.query = this.state.query;
-    this.props.user.editQuery = false;
-  },
-  // edit button
-  onEditQueryClick: function(event) {
-    event.preventDefault();
-    //var lastQuestion = this.props.survey.length;
-    // alert('editing'); // for testing
-    this.props.user.editQuery = true;
-  },
+
   // Info field stuff
   onInfoChange: function(event) {
     this.setState({
@@ -138,36 +118,7 @@ module.exports = React.createClass({
     var lastQuestion = this.props.survey.length;
     // question number for display
     var currentQuestion = this.props.survey.get(lastQuestion).questionNumber;
-    // Query field
-    var queryContent;
-    if (this.props.user.editQuery === true) {
-      // Edit mode
-      queryContent = (
-        <form onSubmit={this.onQuerySubmit}>
-          <fieldset>
-            <legend>Query</legend>
-            <input type='text' name='query' value={this.state.query}
-              onChange={this.onQueryChange} className='form-input'/>
-            <button type='submit' className='button'>
-              Save
-            </button>
-          </fieldset>
-        </form>
-      );
-    } else {
-      // display mode
-      queryContent = (
-        <fieldset>
-          <legend>Query</legend>
-         <span>{this.props.survey.get(lastQuestion).query}</span>
-          <span>
-            <button onClick={this.onEditQueryClick} type='button' className='button pull-right'>
-              Edit
-            </button>
-          </span>
-        </fieldset>
-      );
-    }
+
     // Info field
     var infoContent;
     if (this.props.user.editInfo === true) {
@@ -218,7 +169,7 @@ module.exports = React.createClass({
       <div className='grid-flex-cell'>
         <legend>Questions will display here</legend>
         <span>Question {currentQuestion}</span>
-        {queryContent}
+        <Query user={this.props.user} />
         {infoContent}
         {choicesContent}
         <div className='button-group pull-right'>
