@@ -12,6 +12,7 @@ var Router = require('./router');
 // var Survey = require('./models/survey');
 // var Question = require('./models/question');
 var User = require('./models/user');
+//var favicon = require('file?name=favicon.ico!./img/favicon.ico');
 //expose app to browser console for debugging use
 //!!!!!!!!!!!!!!!!!!!!REMOVE IN PRODUCTION CODE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 window.app = app;

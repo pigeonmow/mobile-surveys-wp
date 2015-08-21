@@ -5,6 +5,7 @@
 'use strict';
 var React = require('react');
 var LinkHelper = require('../helpers/link-helper');
+var url = require('../img/clipboard105.svg');
 
 module.exports = React.createClass({
   //name to show in React devtools extension
@@ -30,7 +31,7 @@ module.exports = React.createClass({
           <h1>Mobile Surveys</h1>
         </header>
         <div className='grid-flex-cell'>
-           <img src='../img/clipboard105.png' className='avatar avatar-large avatar-rounded' />
+           <img src={url} className='avatar avatar-large avatar-rounded' />
           <p>Welcome, here you can create Surveys!</p>
           <a className='link' onClick={this.onNewSurveyClick}>
             Create New Survey

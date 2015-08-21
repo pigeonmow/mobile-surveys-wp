@@ -18,6 +18,8 @@ var React = require('react');
 // will get this.props.name defined as "a" inside the 'Page' component
 // children is a special case - referencing anything in {}
 var LinkHelper = require('./helpers/link-helper');
+var url = require('./img/clipboard105.svg');
+
 
 module.exports = React.createClass({
   // part of react - can specify mixins - when component mounts in DOM
@@ -34,7 +36,7 @@ module.exports = React.createClass({
           <input id='menu-toggle' className='menu-toggle' type='checkbox'/>
           <label htmlFor='menu-toggle'>Menu</label>
           <ul className='list-unstyled list-inline cf'>
-            <li><a href='/'><img src='http://lorempixel.com/output/technics-q-c-480-480-4.jpg' className='avatar avatar-medium avatar-rounded' /></a></li>
+            <li><a href='/'><img src={url} className='avatar avatar-medium avatar-rounded' /></a></li>
             <li><a href='create'>Create Survey</a></li>
             <li><a href='preview'>Preview Survey</a></li>
             <li className='pull-right'><a href='/'>Logout</a></li>
