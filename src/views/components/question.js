@@ -20,7 +20,18 @@ module.exports = React.createClass({
   // preview.js - should this be or should the button relocate here to the 
   // question view - what's more logical??
   // plus of course, need to get it so ir renders the questions - not just 
-  // console.log! 
+  // console.log!
+  getQuestionNumber: (function(event) {
+    var qNum = 0;
+
+    return function() {
+      qNum += 1;
+      var questionNumber = this.props.user.survey.get(qNum).questionNumber;
+      return questionNumber;
+    }
+      
+  }()),
+  
   getQuery: (function(event) {
     var qNum = 0;
     console.log(qNum);
@@ -63,10 +74,11 @@ module.exports = React.createClass({
   
   render: function() {
     console.log(this.props.user.survey.length);
-
+    var qNum = qNum;
 
     return (
       <div className='question'>
+        <h3>Question {this.getQuestionNumber()}</h3>
         <p>{this.getInfo()}</p>
         {this.getQuery()}
         <AnswerChoice choices={this.getChoices()} />

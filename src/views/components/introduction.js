@@ -12,11 +12,9 @@ module.exports = React.createClass({
     console.log(this.props.user.surveyTitle)
     return (
       <div className='survey-introduction'>
-        <h1>{localStorage.getItem('title-data')}</h1>
+        <h1>{this.props.user.get('surveyTitle')}</h1>
         <h3>About this Survey</h3>
-        <p>{localStorage.getItem('instructions-data')}</p>   
-        {this.props.user.get('surveyTitle')}
-        {this.props.user.get('instructions')}
+        <p>{this.props.user.get('instructions')}</p>   
       </div>
     );
   }

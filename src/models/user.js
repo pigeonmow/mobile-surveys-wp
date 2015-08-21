@@ -56,6 +56,13 @@ module.exports = State.extend({
     survey: Survey
   },
   
+  initialize: function() {
+    // check what's already in localstorage
+    this.readUserFromLocalStorage();
+    this.readTitleFromLocalStorage();
+    this.readInstructionsFromLocalStorage();
+  },
+  
     // based on ampersand todomvc
   saveUserToLocalStorage: function() {
     localStorage[USER_STORAGE_KEY] = JSON.stringify(this.userName);
@@ -68,13 +75,29 @@ module.exports = State.extend({
   saveInstructionsToLocalStorage: function() {
     localStorage[INSTRUCTIONS_STORAGE_KEY] = JSON.stringify(this.instructions);
   },
-  // include this on initialization?? 
-/*  readFromLocalStorage: function() {
-    var existingData = localStorage[STORAGE_KEY];
+
+  readUserFromLocalStorage: function() {
+    var existingData = localStorage[USER_STORAGE_KEY];
     
     if (existingData) {
-      this.set(JSON.parse(existingData));
+      this.set({userName: JSON.parse(existingData)});
     }
-  }*/
+  },
+  
+  readTitleFromLocalStorage: function() {
+    var existingData = localStorage[TITLE_STORAGE_KEY];
+    
+    if (existingData) {
+      this.set({surveyTitle: JSON.parse(existingData)});
+    }
+  },
+  
+  readInstructionsFromLocalStorage: function() {
+    var existingData = localStorage[INSTRUCTIONS_STORAGE_KEY];
+    
+    if (existingData) {
+      this.set({instructions: JSON.parse(existingData)});
+    }
+  }
   
 });
