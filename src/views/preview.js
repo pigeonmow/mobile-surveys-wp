@@ -95,9 +95,8 @@ module.exports = React.createClass({
         <h2>Your survey will look like this...</h2>
         <form>
           <div>
-            Something, something, something else...
-              {currentScreen}
-          <button type='button'>Save for later</button>
+            {currentScreen}
+            <button type='button'>Save for later</button>
             <button type='button' onClick={this.onNextClick}>Next</button>
           </div>
 
