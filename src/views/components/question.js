@@ -69,7 +69,7 @@ module.exports = React.createClass({
       <div className='question'>
         {this.getQuery()}
         {this.getInfo()}
-        {this.getChoices()}
+        <AnswerChoice choices={this.getChoices()} />
       </div>
     );
   }

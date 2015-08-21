@@ -9,10 +9,15 @@ module.exports = React.createClass({
   displayName: 'Question',
   
   render: function() {
-    
+    console.log(this.props.user.surveyTitle)
     return (
       <div className='survey-introduction'>
         <h1>Intro Time</h1>
+        {localStorage.getItem('title-data')}
+        {localStorage.getItem('instructions-data')}
+    
+        {this.props.user.get('surveyTitle')}
+        {this.props.user.get('instructions')}
       </div>
     );
   }

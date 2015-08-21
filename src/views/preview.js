@@ -72,7 +72,7 @@ module.exports = React.createClass({
     var currentScreen;
     if (this.state.progress === 'start') {
       currentScreen = (
-        <Intro />
+        <Intro user={this.props.user} />
       );
     } else if (this.state.progress === 'question') {
       currentScreen = (
