@@ -47,7 +47,7 @@ module.exports = React.createClass({
       content = (
         <form onSubmit={this.onSubmit}>
           <fieldset>
-            <legend>User name</legend>
+            <legend>Your User Name</legend>
             <input type='text' value={this.state.userName}
               onChange={this.onUserNameChange} name='username' className='form-input'/>
             <button type='submit' className='button'>

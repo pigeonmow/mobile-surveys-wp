@@ -43,7 +43,7 @@ module.exports = React.createClass({
       content = (
         <form onSubmit={this.onSubmit}>
           <fieldset>
-        <legend>Respondent instructions</legend>
+        <legend>Survey Introduction</legend>
             <textarea value={this.state.instructions} onChange={this.onInstructionsChange} name='instructions' className='form-input'/>
             <button type='submit' className='button'>
                     Save

@@ -18,7 +18,7 @@ var React = require('react');
 // will get this.props.name defined as "a" inside the 'Page' component
 // children is a special case - referencing anything in {}
 var LinkHelper = require('./helpers/link-helper');
-var url = require('./img/clipboard105.svg');
+var url = require('./img/question42_copy.svg');
 
 
 module.exports = React.createClass({
@@ -27,18 +27,27 @@ module.exports = React.createClass({
   // if so registers handler so that on change update is forced
  // mixins: [ampersandMixin],
   displayName: 'MainView',
+  
+  onClearStorageClick: function(event) {
+    var check = confirm('Are you sure you wish to delete the contents of local storage and start over?');
+    if (check === true) {
+      localStorage.clear();  
+     location.assign('/create');
+    }
+  },
 
   render() {
 
     return (
       <LinkHelper>
-        <nav className='top-nav top-nav-light cf' role='navigation'>
+        <nav className='top-nav top-nav-dark cf' role='navigation'>
           <input id='menu-toggle' className='menu-toggle' type='checkbox'/>
           <label htmlFor='menu-toggle'>Menu</label>
           <ul className='list-unstyled list-inline cf'>
             <li><a href='/'><img src={url} className='avatar avatar-medium avatar-rounded' /></a></li>
             <li><a href='create'>Create Survey</a></li>
             <li><a href='preview'>Preview Survey</a></li>
+            <li className='pull-right'><a onClick={this.onClearStorageClick}>Clear Local Storage</a></li>
             <li className='pull-right'><a href='/'>Logout</a></li>
           </ul>
         </nav>

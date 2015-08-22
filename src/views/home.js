@@ -5,7 +5,7 @@
 'use strict';
 var React = require('react');
 var LinkHelper = require('../helpers/link-helper');
-var url = require('../img/clipboard105.svg');
+var url = require('../img/question42_copy.svg');
 
 module.exports = React.createClass({
   //name to show in React devtools extension
@@ -32,7 +32,8 @@ module.exports = React.createClass({
         </header>
         <div className='grid-flex-cell'>
            <img src={url} className='avatar avatar-large avatar-rounded' />
-          <p>Welcome, here you can create Surveys!</p>
+          <h3>Welcome, here you can build questionnaires!</h3>
+            <p>This construction tool can be used to create a questionnaire survey for publication and completion on mobile devices&#8212;particularly tablets. To get started please use the links below.</p>
           <a className='link' onClick={this.onNewSurveyClick}>
             Create New Survey
           </a><br />

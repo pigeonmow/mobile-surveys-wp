@@ -19,27 +19,20 @@ module.exports = React.createClass({
   displayName: 'CreateSurvey',
   mixins: [ampersandMixin],
   
-  onClearStorageClick: function(event) {
-    var check = confirm('Are you sure you wish to delete the contents of local storage and start over?');
-    if (check === true) {
-      localStorage.clear();  
-     location.assign('/create');
-    }
-  },
+
   
   render: function() {
 
     return (
       <div className='grid-flex-container'>
         <div className='grid-flex-cell grid-flex-cell-1of3'>
+          <h3>Add Survey Details Here</h3>
           <UserName user={this.props.user} />
           <SurveyTitle user={this.props.user} />
           <Instructions user={this.props.user} />
         </div>
         <QuestionContainer user={this.props.user} survey={this.props.user.survey} />
-            <div>
-        <button type='button' onClick={this.onClearStorageClick}>Clear All Local Storage</button>
-      </div>
+  
       </div>
 
     );

@@ -81,8 +81,10 @@ module.exports = React.createClass({
           <div className='button-group'>
           <button type='button' onClick={this.onAddChoice} className='button'>Add Choice</button>
           <button type='button' onClick={this.onDeleteChoice} className='button'>
-            Delete Choice
-          </button>
+            Delete Choice</button>
+       <button type='button' onClick={this.onSaveChoicesClick} className='button'>
+          Save Choices
+        </button>
           </div>
         </div>
     );
@@ -97,9 +99,8 @@ module.exports = React.createClass({
     return (
       <div>
         {choicesContent}
-       <button type='button' onClick={this.onSaveChoicesClick} className='button'>
-          Save Choices
-        </button>
+
+
       </div>    
     );
   }

@@ -46,7 +46,7 @@ var content;
       content = (
         <form onSubmit={this.onSubmit}>
           <fieldset>
-        <legend>Survey title</legend>
+        <legend>Survey Title</legend>
             <input type='text' value={this.state.surveyTitle}
               onChange={this.onSurveyTitleChange} name='survey-title' className='form-input' />
             <button type='submit' className='button'>

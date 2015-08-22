@@ -62,7 +62,7 @@ module.exports = React.createClass({
   
     return (
       <div className='grid-flex-cell'>
-        <legend>Questions will display here</legend>
+        <h3>Add Questions Here</h3>
         <span>Question {currentQuestion}</span>
         <Query user={this.props.user} />
         <Info user={this.props.user} />
