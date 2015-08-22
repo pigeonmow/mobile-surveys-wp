@@ -74,19 +74,21 @@ module.exports = React.createClass({
     var choicesContent;
     if (this.props.user.editChoices === true) {
       choicesContent = (
-                <div>
-          <Choice choices={this.state.choices} />
-          <label htmlFor='answer-text'>Enter answer choice</label>
-          <input type='text' onChange={this.onTextChange} value={this.state.text} id='answer-text' className='form-input'/>
-          <div className='button-group'>
-          <button type='button' onClick={this.onAddChoice} className='button'>Add Choice</button>
-          <button type='button' onClick={this.onDeleteChoice} className='button'>
-            Delete Choice</button>
-       <button type='button' onClick={this.onSaveChoicesClick} className='button'>
-          Save Choices
-        </button>
-          </div>
-        </div>
+        <form>
+          <fieldset>
+            <legend>Answer Choices</legend>
+            <Choice choices={this.state.choices} />
+            <label htmlFor='answer-text'>Enter answer choice</label>
+            <input type='text' onChange={this.onTextChange} value={this.state.text} id='answer-text' className='form-input'/>
+            <div className='button-group'>
+              <button type='button' onClick={this.onAddChoice} className='button'>Add                     Choice</button>
+              <button type='button' onClick={this.onDeleteChoice} className='button'>
+                Delete Choice</button>
+              <button type='button' onClick={this.onSaveChoicesClick} className='button'>
+                Save Choices</button>
+            </div>
+          </fieldset>
+        </form>
     );
     } else {
       choicesContent = (

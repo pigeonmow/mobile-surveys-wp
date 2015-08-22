@@ -5,7 +5,7 @@
 'use strict';
 var React = require('react');
 var LinkHelper = require('../helpers/link-helper');
-var url = require('../img/question42_copy.svg');
+var url = require('../img/clipboard105_dark-blue.svg');
 
 module.exports = React.createClass({
   //name to show in React devtools extension

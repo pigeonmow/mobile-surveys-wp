@@ -18,7 +18,7 @@ var React = require('react');
 // will get this.props.name defined as "a" inside the 'Page' component
 // children is a special case - referencing anything in {}
 var LinkHelper = require('./helpers/link-helper');
-var url = require('./img/question42_copy.svg');
+var url = require('./img/clipboard105_dark-blue.svg');
 
 
 module.exports = React.createClass({

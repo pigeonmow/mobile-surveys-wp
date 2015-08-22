@@ -87,6 +87,23 @@ module.exports = React.createClass({
         <Thanks />
       );
     }
+    
+    var navButtons;
+    if (this.state.progress !== 'complete') {
+      navButtons = (
+        <div>
+          <button type='button' className='button' disabled>Save for later</button>
+          <button type='button' className='button' onClick={this.onNextClick}>Next</button>
+        </div>
+      );
+    } else {
+      navButtons = (
+        <div>
+          <button type='button' className='button' disabled>Save for later</button>
+          <button type='button' className='button' disabled>Submit Your Answers</button>
+        </div>
+      );
+    }
       
     return (
       <div>
@@ -96,10 +113,8 @@ module.exports = React.createClass({
         <form>
           <div>
             {currentScreen}
-            <button type='button'>Save for later</button>
-            <button type='button' onClick={this.onNextClick}>Next</button>
+            {navButtons}
           </div>
-
         </form>
       </div>
     );

@@ -67,12 +67,10 @@ module.exports = React.createClass({
         <Query user={this.props.user} />
         <Info user={this.props.user} />
         <MultiChoice user={this.props.user} choices={this.state.choices} />
-        <div className='button-group pull-right'>
  
         <button type='button' onClick={this.onNewQuestionClick} className='button'>
           New Question
         </button>
-        </div>
       </div>
     );
   }

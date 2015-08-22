@@ -29,9 +29,9 @@ module.exports = React.createClass({
         <h3>Your details please</h3>
         <form>
           <label htmlFor='name'>Name:</label>
-          <input type='text' id='name' value={this.state.name} onChange={this.onNameChange} />
+          <input type='text' id='name' className='form-input' value={this.state.name} onChange={this.onNameChange} />
                 <label htmlFor='email'>Email Address:</label>
-          <input type='text' id='email' value={this.state.email} onChange={this.onEmailChange} />
+          <input type='text' id='email' className='form-input' value={this.state.email} onChange={this.onEmailChange} />
         </form>
       </div>
     );

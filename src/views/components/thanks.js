@@ -15,7 +15,7 @@ module.exports = React.createClass({
         <h2>Thank you!</h2>
           <p>We appreciate you taking the time to complete this 
       questionnaire&#8212;your answers help us immensely.</p>
-          <button type='button'>Submit Your Answers</button>
+
       </div>
     );
   }

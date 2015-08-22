@@ -1,14 +1,10 @@
 // Main Styles - src/styles/main.styl
 // Using Stylus CSS preprocessor
 // and yeticss - lightweight styles
+// styles in this file override any yeticss styles
 @import 'yeticss'
-
-// poss colour schemes****
-
 // For dev purposes ***************************
-
-  
-.container
+/*.container
   border: 1px solid pink
   
 .grid-flex-container
@@ -25,33 +21,101 @@ form
 .respondent
 .thanks
   border: 3px dashed purple
+  min-height: 200px*/
+  
+// colours-----------------------------------------
+$dark-blue = #262C3A
+$grey-blue = #517398
+$turquoise = #00DDD8
+$white = #FFFFFF
+
+$dark-blue-light = lighten($dark-blue, 50%)
+$grey-blue-light = lighten($grey-blue, 20%)
+// base -------------------------------------------
+body
+  background-color: $white
+  font-family: $font-aktiv
+  font-size: $font-base
+  color: dark-grey
+  
+p
+  margin: $ui-padding-default
+  
+.survey-introduction
+.question
+.respondent
+.thanks
   min-height: 200px
 
+// links ------------------------------------------
+a
+  color: darken($turquoise, 20%)
+  text-decoration: none
+  cursor: pointer
 
-// ******************************************
-body
-  background-color: #FBFBFB
-  font-family: $font-gotham-rounded
-  
-h1
-  font-family: $font-gotham-rounded
-    
-header
-  padding-top: 50px
+  &:focus
+    outline: none
 
-.label
-  height: 40px
+  &:hover
+    color: $turquoise
 
-  .label-color
-    width: 24px
-    height: 24px
-    border: 1px solid grey
-    border-radius: 20px
-    display: inline-block
+// typography -------------------------------------
+h1, h2, h3, h4, h5, h6
+  font-family: $font-monospaced
+  color: $dark-blue
 
-div
-  margin-left: 20px
-  margin-right: 20px
-  
+// buttons ----------------------------------------
+// padding-top adjusted in base.styl in yeticss node_modules
 .button
-  margin: 10px
+  background-color: $turquoise
+  padding-top: none
+  
+  &:hover
+    background-color: $grey-blue
+    
+  &:disabled,
+  .button-disabled
+    background-color: $dark-blue-light
+    cursor: not-allowed
+    
+.button-group
+  
+  .button
+    border: 1px solid darken($turquoise, 20%)
+    
+// forms ------------------------------------------
+legend, label
+  font-weight: $font-weight-light
+  
+legend
+  color: $dark-blue
+  
+fieldset
+  border: 1px solid $grey-blue-light
+  padding: $ui-padding-spaced
+  
+.form-input
+  padding: $ui-padding-narrow
+  
+  &:focus
+    border: 1px solid $turquoise
+    
+// navigation -------------------------------------
+.top-nav
+  margin-bottom: $ui-padding-default
+  
+  li
+    padding: $ui-padding-spaced
+    
+.top-nav-dark
+  label, a
+    color: lighten($grey-blue-light, 40%)
+    
+  a:hover, a.active, label
+    color: $dark-blue
+    
+.top-nav-dark
+.top-nav-dark li
+  background-color: $grey-blue
+    
+  
