@@ -65,6 +65,111 @@ module.exports = React.createClass({
 
   },
   
+  onSaveSurveyClick: function(event) {
+    alert('clicked!');
+    // Convert all survey data to JSON ready to persist to server
+    // JSON.stringify implicitly calls toJSON which calls serialize
+    // see Ampersand docs for these methods
+    var surveyJSON = JSON.stringify(app.user);
+    console.log(surveyJSON);
+    // call hxr request function
+    
+    // reset the app after persisting to server
+  },
+  
+  // test set up AJAX - GET method - works! - based on MDN AJAX getting started - using asynchronous request*************************
+  makeRequest: function(url) {
+    // instantiate XMLHttpRequest object
+    var request = new XMLHttpRequest();
+    // assign the function to handle the response
+    request.onreadystatechange = alertContents;
+    // make the request
+    // open params: method, url, is request async? (opt - default true)
+    request.open('GET', url);
+    // send param: data to send to server (using JSON here)
+    request.send();
+    
+    // function to handle the response
+    function alertContents() {
+      // handle exception if server goes down
+      try {
+        // check request state
+        if (request.readyState === 4) {
+          // it's all ready so...
+          // check server response code
+          if (request.status === 200) {
+            // great! - show contents of the html file
+            alert(request.responseText);
+          } else {
+            // some problem
+            alert('something went wrong');
+          }
+        } else {
+          // still waiting...
+        }
+      }
+      catch(exception) {
+        alert('Caught Exception: ' + exception.description)
+      }
+    }
+  },
+  // test GET from localhost
+  testGET: function() {
+    alert('testing xhr request');
+    this.makeRequest('http://www.mattdmoss.co.uk/index.php');
+  },
+  
+  // sending to server - based on MDN AJAX getting started - using asynchronous request********TODO - rename 'alertContents' 
+  createRequest: function(url, surveyJSON) {
+    // instantiate XMLHttpRequest object
+    var request = new XMLHttpRequest();
+    // assign the function to handle the response
+    request.onreadystatechange = alertContents;
+    // make the request
+    // open params: method, url, is request async? (opt - default true)
+    request.open('POST', '/data.php');
+    // should probably add setRequestHeader here...
+    request.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+    // send param: data to send to server (using JSON here)
+    request.send(JSON.stringify({name: 'bob', age: '33'}));
+    
+    // function to handle the response
+    function alertContents() {
+      // handle exception if server goes down
+      try {
+        // check request state
+        if (request.readyState === 4) {
+          // it's all ready so...
+          // check server response code
+          if (request.status === 200) {
+            // great! - show contents of the html file
+            alert(request.responseText);
+          } else {
+            // some problem
+            alert('something went wrong');
+          }
+        } else {
+          // still waiting...
+        }
+      }
+      catch(exception) {
+        alert('Caught Exception: ' + exception.description)
+      }
+    }
+  },
+  
+  // test POST from localhost
+/*  testPOST: function(event) {
+    event.preventDefault;
+    alert('testing xhr request');
+    var surveyJSON = JSON.stringify({"employees":[
+    {"firstName":"John", "lastName":"Doe"},
+    {"firstName":"Anna", "lastName":"Smith"},
+    {"firstName":"Peter", "lastName":"Jones"}
+]});
+    this.createRequest('./data', surveyJSON);
+  },
+  */
 
 
 
@@ -114,6 +219,11 @@ module.exports = React.createClass({
           <div>
             {currentScreen}
             {navButtons}
+          </div>
+          <div className='save-button'>
+          <button type='button' className='button pull-right' onClick={this.onSaveSurveyClick}>Save Your Survey</button>
+          <button type='button' onClick={this.testGET}>test GET button</button>
+          <button type='button' onClick={this.createRequest}>test POST button</button>
           </div>
         </form>
       </div>

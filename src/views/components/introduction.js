@@ -9,7 +9,7 @@ module.exports = React.createClass({
   displayName: 'Question',
   
   render: function() {
-    console.log(this.props.user.surveyTitle)
+    //console.log(this.props.user.surveyTitle)
     return (
       <div className='survey-introduction'>
         <h1>{this.props.user.get('surveyTitle')}</h1>

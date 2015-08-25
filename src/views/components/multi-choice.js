@@ -93,6 +93,7 @@ module.exports = React.createClass({
     } else {
       choicesContent = (
       <fieldset>
+        <legend>Answer Choices</legend>
         <Choice choices={this.state.choices} />
           <button onClick={this.onEditChoicesClick} type='button' className='button pull-right'>Edit</button>
       </fieldset>

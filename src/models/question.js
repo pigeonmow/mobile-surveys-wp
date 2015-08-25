@@ -37,7 +37,7 @@ module.exports = State.extend({
     }
   },
   
-  // usure if needed
+  // unsure if needed - relocated to user model...
 /*  session: {
 
     editQuery: {

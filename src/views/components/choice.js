@@ -14,8 +14,8 @@ module.exports = React.createClass({
       return (
         <li key={index + choiceElement}>
           Choice Number:
-          {index}
-          <input type='radio' name='answer-choice' />
+          {index}<span> </span>
+          <input className='radio-button' type='radio' name='answer-choice' /><span> </span>
           {choiceElement}
         </li>
       );
