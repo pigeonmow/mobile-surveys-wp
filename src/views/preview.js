@@ -8,9 +8,7 @@ var Question = require('./components/question');
 var Thanks = require('./components/thanks');
 var Respondent = require('./components/respondent');
 var Intro = require('./components/introduction');
-
-// maybe use ternary logic for fields not yet populated...?
-// condition ? expr1 : expr2 
+var SURVEY = 'my-survey';
 
 module.exports = React.createClass({
   displayName: 'PreviewSurvey',
@@ -20,34 +18,23 @@ module.exports = React.createClass({
       progress: 'start'
     }
   },
-  
+  // need to rename myfunction
   myfunction: (function(event) {
     var qNum = 0;
-
-
     return function() {
       qNum += 1;
       return qNum;
-    }
-      
+    }   
   }()),
   
   onNextClick: function(event) {
     var qNum = this.myfunction();
 
- // console.log(this.props.user.survey.get(qNum).questionNumber);
-   
-    //alert('click next you did! & nothing happened...yet');
     if (this.state.progress === 'start') {
       this.setState(
         {progress: 'question'}
       );
-      // at this point need logic to step through questions - 
-      // see in question.js component --- need to use survey.length to determine
-      // the end! - maybe ternery in here...?
     } else if (this.state.progress === 'question') {
-
-      // here's my problem because currentQuestion is staying at 1 
       var currentQuestion = this.props.user.survey.get(qNum).questionNumber;
       currentQuestion === this.props.user.survey.length ? 
         this.setState(
@@ -56,13 +43,11 @@ module.exports = React.createClass({
         this.setState(
           {progress: 'question'}
         );
-
     } else if (this.state.progress === 'respondent') {
       this.setState(
         {progress: 'complete'}
       );
     }
-
   },
   
   onSaveSurveyClick: function(event) {
@@ -70,13 +55,13 @@ module.exports = React.createClass({
     // Convert all survey data to JSON ready to persist to server
     // JSON.stringify implicitly calls toJSON which calls serialize
     // see Ampersand docs for these methods
-    var surveyJSON = JSON.stringify(app.user);
-    console.log(surveyJSON);
+    // var surveyJSON = JSON.stringify(app.user);
+    // Temporary solution saves JSON to localstorage (until I figure out server)
+    localStorage[SURVEY] = JSON.stringify(app.user);
+    // console.log(surveyJSON);
     // call hxr request function
-    
     // reset the app after persisting to server
   },
-  
   // test set up AJAX - GET method - works! - based on MDN AJAX getting started - using asynchronous request*************************
   makeRequest: function(url) {
     // instantiate XMLHttpRequest object
@@ -88,7 +73,6 @@ module.exports = React.createClass({
     request.open('GET', url);
     // send param: data to send to server (using JSON here)
     request.send();
-    
     // function to handle the response
     function alertContents() {
       // handle exception if server goes down
@@ -116,10 +100,9 @@ module.exports = React.createClass({
   // test GET from localhost
   testGET: function() {
     alert('testing xhr request');
-    this.makeRequest('http://www.mattdmoss.co.uk/index.php');
+    this.makeRequest('test.html');
   },
-  
-  // sending to server - based on MDN AJAX getting started - using asynchronous request********TODO - rename 'alertContents' 
+  // sending to server - POST based on MDN AJAX getting started - using asynchronous request******curently 404's :(
   createRequest: function(url, surveyJSON) {
     // instantiate XMLHttpRequest object
     var request = new XMLHttpRequest();
@@ -127,12 +110,11 @@ module.exports = React.createClass({
     request.onreadystatechange = alertContents;
     // make the request
     // open params: method, url, is request async? (opt - default true)
-    request.open('POST', '/data.php');
+    request.open('POST', 'test.php');
     // should probably add setRequestHeader here...
     request.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
     // send param: data to send to server (using JSON here)
     request.send(JSON.stringify({name: 'bob', age: '33'}));
-    
     // function to handle the response
     function alertContents() {
       // handle exception if server goes down
@@ -157,7 +139,6 @@ module.exports = React.createClass({
       }
     }
   },
-  
   // test POST from localhost
 /*  testPOST: function(event) {
     event.preventDefault;
@@ -170,9 +151,6 @@ module.exports = React.createClass({
     this.createRequest('./data', surveyJSON);
   },
   */
-
-
-
   render: function() {
     var currentScreen;
     if (this.state.progress === 'start') {
@@ -212,8 +190,6 @@ module.exports = React.createClass({
       
     return (
       <div>
-
-
         <h2>Your survey will look like this...</h2>
         <form>
           <div>
