@@ -12,7 +12,9 @@ module.exports = getConfig({
   // Directory for public files
   out: 'public',
   // NODE_ENV variable used to specify development or production mode
-  isDev: process.env.NODE_ENV !== 'production'
+  isDev: process.env.NODE_ENV !== 'production',
   // Configure local hostname to run app on other local devices - ipad etc
   // hostname: 'TheArchitect-V3.local'
+  // CORS stuff
+  headers: {'Access-Control-Allow-Origin': '*'}
 });

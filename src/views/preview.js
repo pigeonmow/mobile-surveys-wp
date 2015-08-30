@@ -4,10 +4,10 @@
  */
 'use strict';
 var React = require('react');
-var Question = require('./components/question');
-var Thanks = require('./components/thanks');
-var Respondent = require('./components/respondent');
-var Intro = require('./components/introduction');
+var Question = require('./preview/question');
+var Thanks = require('./preview/thanks');
+var Respondent = require('./preview/respondent');
+var Intro = require('./preview/introduction');
 var SURVEY = 'my-survey';
 
 module.exports = React.createClass({
@@ -110,7 +110,7 @@ module.exports = React.createClass({
     request.onreadystatechange = alertContents;
     // make the request
     // open params: method, url, is request async? (opt - default true)
-    request.open('POST', 'test.php');
+    request.open('POST', 'http://localhost:5000');
     // should probably add setRequestHeader here...
     request.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
     // send param: data to send to server (using JSON here)

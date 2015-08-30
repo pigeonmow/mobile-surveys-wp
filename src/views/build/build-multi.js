@@ -3,7 +3,7 @@
  */
 'use strict';
 var React = require('react');
-var Choice = require('./choice');
+var Choice = require('./build-choice');
 //var ampersandMixin = require('ampersand-react-mixin');
 
 module.exports = React.createClass({

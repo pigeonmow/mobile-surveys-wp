@@ -10,7 +10,7 @@ var MainView = require('./main-view');
 var HomePage = require('./views/home');
 var CreateSurvey = require('./views/create-survey');
 var Preview = require('./views/preview');
-var MessagePage = require('./views/message');
+var MessagePage = require('./views/404');
 /** 
  * Uses ampersand-router node module
  * dealing with urls on the clientside: create code that handles & renders

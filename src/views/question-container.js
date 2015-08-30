@@ -5,9 +5,9 @@
 'use strict';
 var React = require('react');
 
-var Query = require('./components/query');
-var Info = require('./components/info');
-var MultiChoice = require('./components/multi-choice');
+var Query = require('./build/build-query');
+var Info = require('./build/build-info');
+var MultiChoice = require('./build/build-multi');
 //var ampersandMixin = require('ampersand-react-mixin');
 // this file needs refactoring into seperate components with individual concerns
 module.exports = React.createClass({

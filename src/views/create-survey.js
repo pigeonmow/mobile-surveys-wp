@@ -4,10 +4,10 @@
  */
 'use strict';
 var React = require('react');
-var UserName = require('./components/user-name');
-var SurveyTitle = require('./components/survey-title');
+var UserName = require('./build/build-user');
+var SurveyTitle = require('./build/build-title');
 var QuestionContainer = require('./question-container');
-var Instructions = require('./components/instructions');
+var Instructions = require('./build/build-instructions');
 var ampersandMixin = require('ampersand-react-mixin');
 // React - nice to have html5 in here to see in context - trade off seperation
 // of concerns - is it seperate?? View - describes DOM interaction & stuff...
