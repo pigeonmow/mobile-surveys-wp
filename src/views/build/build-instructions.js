@@ -1,4 +1,4 @@
-/* Instructions React Controlled Form Component - instructions.js
+/* Survey Instructions React Controlled Form Component - instructions.js
  * 01/07/2015
  * Author: Matthew Moss
  */
@@ -7,7 +7,7 @@ var React = require('react');
 var ampersandMixin = require('ampersand-react-mixin');
 
 module.exports = React.createClass({
-  displayName: 'Instructions',
+  displayName: 'SurveyInstructions',
   mixins: [ampersandMixin],
   
   getInitialState: function() {

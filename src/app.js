@@ -15,13 +15,13 @@ var User = require('./models/user');
 // should copy favicon to root directory on build
 var favicon = require('file?name=favicon.ico!./img/favicon.ico');
 //expose app to browser console for debugging use
-//!!!!!!!!!!!!!!!!!!!!REMOVE IN PRODUCTION CODE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//******************REMOVE IN PRODUCTION CODE*******************************
 window.app = app;
 //main entry point for the application & then call it
 //extends ampersand-app
 app.extend({
   init: function() {
-    // create ne user model & attach to App object
+    // create new user model & attach to App object
     this.user = new User();
     // create a new survey model & attach to app object
     // not entirely sure if I need to do this*******

@@ -26,6 +26,7 @@ module.exports = Collection.extend({
     this.saveToLocalStorage = debounce(this.saveToLocalStorage, 100);
     
     //listen for changes to the collection & save when it does
+    // Observer pattern
     this.on('all', this.saveToLocalStorage, this);
   },
   

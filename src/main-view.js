@@ -37,7 +37,7 @@ module.exports = React.createClass({
   },
 
   render() {
-
+    // console.log(this.props.children.props.user.survey);
     return (
       <LinkHelper>
         <nav className='top-nav top-nav-dark cf' role='navigation'>

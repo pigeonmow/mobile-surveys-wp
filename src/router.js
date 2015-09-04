@@ -41,7 +41,7 @@ module.exports = Router.extend({
     if (opts.layout) {
 
       view = (
-        <MainView survey={app.survey}>
+        <MainView>
           {view}
         </MainView>
       )

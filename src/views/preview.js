@@ -18,7 +18,7 @@ module.exports = React.createClass({
       progress: 'start'
     }
   },
-  // need to rename myfunction
+  // need to rename 'myfunction'
   myfunction: (function(event) {
     var qNum = 0;
     return function() {
@@ -197,7 +197,7 @@ module.exports = React.createClass({
             {navButtons}
           </div>
           <div className='save-button'>
-          <button type='button' className='button pull-right' onClick={this.onSaveSurveyClick}>Save Your Survey</button>
+          <button type='button' className='button pull-right' onClick={this.onSaveSurveyClick}>Publish Your Survey</button>
           <button type='button' onClick={this.testGET}>test GET button</button>
           <button type='button' onClick={this.createRequest}>test POST button</button>
           </div>
