@@ -16,5 +16,12 @@ module.exports = getConfig({
   // Configure local hostname to run app on other local devices - ipad etc
   // hostname: 'TheArchitect-V3.local'
   // CORS stuff
-  headers: {'Access-Control-Allow-Origin': '*'}
+  headers: {'Access-Control-Allow-Origin': '*'},
+  // create 200.html file for surge clientside routing
+  html: function(context) {
+    return {
+      'index.html': context.defaultTemplate(),
+      '200.html': context.defaultTemplate()
+    }
+  }
 });

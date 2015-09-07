@@ -7,7 +7,7 @@
 var React = require('react');
 // for finished survey displaying
 module.exports = React.createClass({
-
+  displayName: 'AnswerChoice',
   render: function() {
 
     var createChoice = function(choiceElement, index) {

@@ -51,16 +51,17 @@ module.exports = React.createClass({
   },
   
   onSaveSurveyClick: function(event) {
-    alert('clicked!');
     // Convert all survey data to JSON ready to persist to server
     // JSON.stringify implicitly calls toJSON which calls serialize
     // see Ampersand docs for these methods
     // var surveyJSON = JSON.stringify(app.user);
     // Temporary solution saves JSON to localstorage (until I figure out server)
     localStorage[SURVEY] = JSON.stringify(app.user);
+    alert('Survey data saved to local storage for the time being');
     // console.log(surveyJSON);
     // call hxr request function
     // reset the app after persisting to server
+    
   },
   // test set up AJAX - GET method - works! - based on MDN AJAX getting started - using asynchronous request*************************
   makeRequest: function(url) {
@@ -110,7 +111,7 @@ module.exports = React.createClass({
     request.onreadystatechange = alertContents;
     // make the request
     // open params: method, url, is request async? (opt - default true)
-    request.open('POST', 'http://localhost:5000');
+    request.open('POST', 'http://localhost:5000/data.json');
     // should probably add setRequestHeader here...
     request.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
     // send param: data to send to server (using JSON here)
@@ -198,11 +199,13 @@ module.exports = React.createClass({
           </div>
           <div className='save-button'>
           <button type='button' className='button pull-right' onClick={this.onSaveSurveyClick}>Publish Your Survey</button>
-          <button type='button' onClick={this.testGET}>test GET button</button>
-          <button type='button' onClick={this.createRequest}>test POST button</button>
+
           </div>
         </form>
       </div>
     );
   }
 });
+
+/*          <button type='button' onClick={this.testGET}>test GET button</button>
+          <button type='button' onClick={this.createRequest}>test POST button</button>*/

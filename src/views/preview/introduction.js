@@ -6,7 +6,7 @@
 var React = require('react');
 // View component for an introduction  in final survey -
 module.exports = React.createClass({
-  displayName: 'Question',
+  displayName: 'QuestionIntro',
   
   render: function() {
     //console.log(this.props.user.surveyTitle)

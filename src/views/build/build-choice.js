@@ -7,7 +7,7 @@
 var React = require('react');
 
 module.exports = React.createClass({
-
+  displayName: 'QuestionChoice',
   render: function() {
 
     var createChoice = function(choiceElement, index) {
