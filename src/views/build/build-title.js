@@ -1,6 +1,7 @@
-/* Survey Title React Controlled Form Component - survey-title.js
- * 01/07/2015
- * Author: Matthew Moss
+/**
+ * Survey Title React Controlled Form Component - build-title.js
+ * @module
+ * @author Matthew Moss
  */
 'use strict';
 var React = require('react');
@@ -19,9 +20,8 @@ module.exports = React.createClass({
   onSurveyTitleChange: function(event) {
     this.setState({
       surveyTitle: event.target.value
-    }); 
+    });
   },
-  
   // handle submit
   onSubmit: function(event) {
     event.preventDefault();
@@ -31,15 +31,14 @@ module.exports = React.createClass({
     this.props.user.saveTitleToLocalStorage(this.props.user.surveyTitle);
     this.props.user.editSurveyTitle = false;
   },
-  
   // edit button handler
   onEditClick: function(event) {
     event.preventDefault();
     this.props.user.editSurveyTitle = true;
   },
-  
+
   render: function() {
-var content;
+    var content;
     // branching of render method set up - assigning to content var
     if (this.props.user.editSurveyTitle === true) {
       // Edit mode
@@ -48,7 +47,8 @@ var content;
           <fieldset>
         <legend>Survey Title</legend>
             <input type='text' value={this.state.surveyTitle}
-              onChange={this.onSurveyTitleChange} name='survey-title' className='form-input' />
+              onChange={this.onSurveyTitleChange} name='survey-title'
+                className='form-input' required />
             <button type='submit' className='button'>
                     Save
             </button>
@@ -63,7 +63,8 @@ var content;
 
           <span>{this.props.user.surveyTitle}</span>
           <span>
-            <button type='button' onClick={this.onEditClick} className='button pull-right'>
+            <button type='button' onClick={this.onEditClick}
+              className='button pull-right'>
                   Edit
             </button>
           </span>
@@ -77,4 +78,4 @@ var content;
       </div>
     );
   }
-})
+});

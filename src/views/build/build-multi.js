@@ -1,24 +1,22 @@
-/* Multiple Choice React Component - multi-choice.js
- * Author: Matthew Moss
+/**
+ * Multiple Choice React Component - multi-choice.js
+ * @module
+ * @author Matthew Moss
  */
 'use strict';
 var React = require('react');
 var Choice = require('./build-choice');
-//var ampersandMixin = require('ampersand-react-mixin');
 
 module.exports = React.createClass({
   displayName: 'MultipleChoice',
-  //mixins: [ampersandMixin],
-  
+
   getInitialState: function() {
 
-    
     return {
       choices: this.props.choices,
       text: ''
-    }
+    };
   },
-  
   // multiple choice question stuff
   // start with empty text string - choices is an array of strings
   onTextChange: function(event) {
@@ -55,21 +53,19 @@ module.exports = React.createClass({
     }
     // if they click cancel - do nothing
   },
-  
+
   onSaveChoicesClick: function() {
    // alert('Saving!');
     this.props.user.editChoices = false;
   },
-  
-    
+
   onEditChoicesClick: function(event) {
     event.preventDefault();
     this.props.user.editChoices = true;
   },
-  
+
   render: function() {
     var lastQuestion = this.props.user.survey.length;
-
     // multiple choice question view
     var choicesContent;
     if (this.props.user.editChoices === true) {
@@ -79,12 +75,16 @@ module.exports = React.createClass({
             <legend>Answer Choices</legend>
             <Choice choices={this.state.choices} />
             <label htmlFor='answer-text'>Enter answer choice</label>
-            <input type='text' onChange={this.onTextChange} value={this.state.text} id='answer-text' className='form-input'/>
+            <input type='text' onChange={this.onTextChange}
+              value={this.state.text} id='answer-text' className='form-input'/>
             <div className='button-group'>
-              <button type='button' onClick={this.onAddChoice} className='button'>Add                     Choice</button>
-              <button type='button' onClick={this.onDeleteChoice} className='button'>
+              <button type='button' onClick={this.onAddChoice}
+                className='button'>Add                     Choice</button>
+              <button type='button' onClick={this.onDeleteChoice}
+                className='button'>
                 Delete Choice</button>
-              <button type='button' onClick={this.onSaveChoicesClick} className='button'>
+              <button type='button' onClick={this.onSaveChoicesClick}
+                className='button'>
                 Save Choices</button>
             </div>
           </fieldset>
@@ -95,17 +95,15 @@ module.exports = React.createClass({
       <fieldset>
         <legend>Answer Choices</legend>
         <Choice choices={this.state.choices} />
-          <button onClick={this.onEditChoicesClick} type='button' className='button pull-right'>Edit</button>
+          <button onClick={this.onEditChoicesClick} type='button'
+            className='button pull-right'>Edit</button>
       </fieldset>
     );
     }
     return (
       <div>
         {choicesContent}
-
-
-      </div>    
+      </div>
     );
   }
-  
 });

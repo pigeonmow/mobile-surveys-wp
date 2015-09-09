@@ -1,7 +1,9 @@
-/* Answer Choice React Component - answer-choice.js
- * 08/08/2015
- * Author: Matthew Moss
- * Based on: ..........................
+/**
+ * Answer Choice React Component - answer-choice.js
+ * @module
+ * @author Matthew Moss
+ * Based on: http://www.randomsnippets.com/2008/02/21/how-to-dynamically-add-
+ * form-elements-via-javascript/
  */
 'use strict';
 var React = require('react');
@@ -18,7 +20,7 @@ module.exports = React.createClass({
         </li>
       );
     };
-    
+
     return (
       <div>
       <ul>{this.props.choices.map(createChoice)}</ul>

@@ -1,6 +1,6 @@
-/* Webpack Configuration - webpack.config.js
- * 01/07/2015
- * Author: Matthew Moss
+/**
+ * Webpack Configuration - webpack.config.js
+ * @author Matthew Moss
  */
 'use strict';
 // Webpack Configuration Settings - webpack.config.js

@@ -1,6 +1,7 @@
-/* Survey Instructions React Controlled Form Component - instructions.js
- * 01/07/2015
- * Author: Matthew Moss
+/**
+ * Survey Instructions React Controlled Form Component - instructions.js
+ * @module
+ * @author Matthew Moss
  */
 'use strict';
 var React = require('react');
@@ -9,7 +10,7 @@ var ampersandMixin = require('ampersand-react-mixin');
 module.exports = React.createClass({
   displayName: 'SurveyInstructions',
   mixins: [ampersandMixin],
-  
+
   getInitialState: function() {
     return {
       instructions: this.props.user.instructions
@@ -21,7 +22,6 @@ module.exports = React.createClass({
       instructions: event.target.value
     });
   },
-  
   // edit method
   onEditClick: function(event) {
     event.preventDefault();
@@ -34,7 +34,7 @@ module.exports = React.createClass({
     this.props.user.saveInstructionsToLocalStorage(this.props.user.instructions);
     this.props.user.editInstructions = false;
   },
-  
+
   render: function() {
     var content;
     // branching of render method set up - assigning to content var
@@ -44,7 +44,9 @@ module.exports = React.createClass({
         <form onSubmit={this.onSubmit}>
           <fieldset>
         <legend>Survey Introduction</legend>
-            <textarea value={this.state.instructions} onChange={this.onInstructionsChange} name='instructions' className='form-input'/>
+            <textarea value={this.state.instructions}
+              onChange={this.onInstructionsChange} name='instructions'
+              className='form-input'required />
             <button type='submit' className='button'>
                     Save
             </button>
@@ -58,18 +60,18 @@ module.exports = React.createClass({
           <legend>Respondent instructions</legend>
           <span>{this.props.user.instructions}</span>
           <span>
-            <button type='button' onClick={this.onEditClick} className='button pull-right'>
+            <button type='button' onClick={this.onEditClick}
+              className='button pull-right'>
                   Edit
             </button>
           </span>
         </fieldset>
       );
     }
-      return (
+    return (
         <div>
         {content}
         </div>
-      );
+    );
   }
-  
 });

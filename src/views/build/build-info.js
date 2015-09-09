@@ -1,19 +1,20 @@
-/* Question Info React Component - info.js
- * Author: Matthew Moss
+/**
+ * Question Info React Component - build-info.js
+ * @module
+ * @module Matthew Moss
  */
 'use strict';
 var React = require('react');
 
 module.exports = React.createClass({
   displayName: 'QuestionInfo',
-  
+
   getInitialState: function() {
     return {
       info: ''
-    }
+    };
   },
-
-    // Info field stuff
+  // Info field stuff
   onInfoChange: function(event) {
     this.setState({
       info: event.target.value
@@ -30,14 +31,11 @@ module.exports = React.createClass({
 
   onEditInfoClick: function(event) {
     event.preventDefault();
-    //var lastQuestion = this.props.survey.length;
     this.props.user.editInfo = true;
   },
 
-  
   render: function() {
     var lastQuestion = this.props.user.survey.length;
-  
     // Info field
     var infoContent;
     if (this.props.user.editInfo === true) {
@@ -45,7 +43,8 @@ module.exports = React.createClass({
         <form onSubmit={this.onInfoSubmit}>
           <fieldset>
             <legend>Question Info</legend>
-            <textarea value={this.state.info} onChange={this.onInfoChange} className='form-input'/>
+            <textarea value={this.state.info} onChange={this.onInfoChange}
+              className='form-input' />
             <button type='submit' className='button'>Save</button>
           </fieldset>
         </form>
@@ -55,15 +54,15 @@ module.exports = React.createClass({
         <fieldset>
           <legend>Question Info</legend>
           <span>{this.props.user.survey.get(lastQuestion).info}</span>
-          <button onClick={this.onEditInfoClick} type='button' className='button pull-right'>Edit</button>
+          <button onClick={this.onEditInfoClick} type='button'
+            className='button pull-right'>Edit</button>
         </fieldset>
       );
     }
     return (
       <div>
         {infoContent}
-      </div>    
+      </div>
     );
   }
-  
 });

@@ -1,18 +1,19 @@
-/* Query React Component - query.js
- * Author: Matthew Moss
+/**
+ * Query React Component - query.js
+ * @module
+ * @module Matthew Moss
  */
 'use strict';
 var React = require('react');
 
 module.exports = React.createClass({
   displayName: 'Query',
-  
+
   getInitialState: function() {
     return {
       query: ''
-    }
+    };
   },
-
   // Query field stuff
   // handlers
   onQueryChange: function(event) {
@@ -35,7 +36,7 @@ module.exports = React.createClass({
     // alert('editing'); // for testing
     this.props.user.editQuery = true;
   },
-  
+
   render: function() {
     var lastQuestion = this.props.user.survey.length;
     // Query field
@@ -47,7 +48,7 @@ module.exports = React.createClass({
           <fieldset>
             <legend>Query</legend>
             <input type='text' name='query' value={this.state.query}
-              onChange={this.onQueryChange} className='form-input'/>
+              onChange={this.onQueryChange} className='form-input' required />
             <button type='submit' className='button'>
               Save
             </button>
@@ -61,18 +62,19 @@ module.exports = React.createClass({
           <legend>Query</legend>
          <span>{this.props.user.survey.get(lastQuestion).query}</span>
           <span>
-            <button onClick={this.onEditQueryClick} type='button' className='button pull-right'>
+            <button onClick={this.onEditQueryClick} type='button'
+              className='button pull-right'>
               Edit
             </button>
           </span>
         </fieldset>
       );
-    }   
+    }
     return (
       <div>
         {queryContent}
-      </div>    
+      </div>
     );
   }
-  
+
 });

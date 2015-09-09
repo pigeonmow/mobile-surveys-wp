@@ -1,7 +1,9 @@
-/* Question Choice React Component - choice.js
- * 01/07/2015
- * Author: Matthew Moss
- * Based on: ..........................
+/**
+ * Question Choice React Component - choice.js
+ * @module
+ * @author Matthew Moss
+ * Based on: http://www.randomsnippets.com/2008/02/21/how-to-dynamically-add-
+ * form-elements-via-javascript/
  */
 'use strict';
 var React = require('react');
@@ -15,7 +17,8 @@ module.exports = React.createClass({
         <li key={index + choiceElement}>
           Choice Number:
           {index}<span> </span>
-          <input className='radio-button' type='radio' name='answer-choice' /><span> </span>
+          <input className='radio-button' type='radio' name='answer-choice' />
+          <span> </span>
           {choiceElement}
         </li>
       );

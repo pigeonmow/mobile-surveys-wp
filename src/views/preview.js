@@ -1,6 +1,7 @@
-/* Preview Survey React Component - preview.js
- * 28/07/2015
- * Author: Matthew Moss
+/**
+ * Preview Survey React Component - preview.js
+ * @module
+ * @author Matthew Moss
  */
 'use strict';
 var React = require('react');
@@ -12,11 +13,11 @@ var SURVEY = 'my-survey';
 
 module.exports = React.createClass({
   displayName: 'PreviewSurvey',
-  
-  getInitialState: function () {
+
+  getInitialState: function() {
     return {
       progress: 'start'
-    }
+    };
   },
   // need to rename 'myfunction'
   myfunction: (function(event) {
@@ -24,9 +25,9 @@ module.exports = React.createClass({
     return function() {
       qNum += 1;
       return qNum;
-    }   
+    };
   }()),
-  
+
   onNextClick: function(event) {
     var qNum = this.myfunction();
 
@@ -49,7 +50,7 @@ module.exports = React.createClass({
       );
     }
   },
-  
+
   onSaveSurveyClick: function(event) {
     // Convert all survey data to JSON ready to persist to server
     // JSON.stringify implicitly calls toJSON which calls serialize
@@ -61,9 +62,9 @@ module.exports = React.createClass({
     // console.log(surveyJSON);
     // call hxr request function
     // reset the app after persisting to server
-    
   },
-  // test set up AJAX - GET method - works! - based on MDN AJAX getting started - using asynchronous request*************************
+  // test set up AJAX - GET method - works! - based on MDN AJAX getting started
+  // - using asynchronous request*************************
   makeRequest: function(url) {
     // instantiate XMLHttpRequest object
     var request = new XMLHttpRequest();
@@ -134,9 +135,8 @@ module.exports = React.createClass({
         } else {
           // still waiting...
         }
-      }
-      catch(exception) {
-        alert('Caught Exception: ' + exception.description)
+      } catch(exception) {
+        alert('Caught Exception: ' + exception.description);
       }
     }
   },
@@ -165,30 +165,34 @@ module.exports = React.createClass({
     } else if (this.state.progress === 'respondent') {
       currentScreen = (
         <Respondent />
-      );                             
+      );
     } else {
       currentScreen = (
         <Thanks />
       );
     }
-    
+
     var navButtons;
     if (this.state.progress !== 'complete') {
       navButtons = (
         <div>
-          <button type='button' className='button' disabled>Save for later</button>
-          <button type='button' className='button' onClick={this.onNextClick}>Next</button>
+          <button type='button' className='button' disabled>Save for later
+          </button>
+          <button type='button' className='button'
+            onClick={this.onNextClick}>Next</button>
         </div>
       );
     } else {
       navButtons = (
         <div>
-          <button type='button' className='button' disabled>Save for later</button>
-          <button type='button' className='button' disabled>Submit Your Answers</button>
+          <button type='button' className='button' disabled>Save for later
+          </button>
+          <button type='button' className='button' disabled>Submit Your Answers
+          </button>
         </div>
       );
     }
-      
+
     return (
       <div>
         <h2>Your survey will look like this...</h2>
@@ -198,14 +202,16 @@ module.exports = React.createClass({
             {navButtons}
           </div>
           <div className='save-button'>
-          <button type='button' className='button pull-right' onClick={this.onSaveSurveyClick}>Publish Your Survey</button>
-
+          <button type='button' className='button pull-right'
+            onClick={this.onSaveSurveyClick}>Publish Your Survey</button>
           </div>
         </form>
       </div>
     );
   }
 });
-
-/*          <button type='button' onClick={this.testGET}>test GET button</button>
-          <button type='button' onClick={this.createRequest}>test POST button</button>*/
+// Test buttons for get/post
+/*          <button type='button' onClick={this.testGET}>test GET button
+            </button>
+          <button type='button' onClick={this.createRequest}>test POST button
+          </button>*/
