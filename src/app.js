@@ -1,7 +1,7 @@
 /**
  * App - app.js
- * 01/07/2015
- * Author: Matthew Moss
+ * @module
+ * @author Matthew Moss
  */
 'use strict';
 // Application Entry Point - src/app.js

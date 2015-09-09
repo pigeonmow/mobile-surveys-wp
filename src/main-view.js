@@ -1,7 +1,7 @@
 /**
  * Main View Component - main-view.js
- * 01/07/2015
- * Author: Matthew Moss
+ * @module
+ * @author Matthew Moss
  */
 'use strict';
 // Serves as a container for all views/pages to render into
