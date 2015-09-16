@@ -30,9 +30,13 @@ module.exports = React.createClass({
         <div className='grid-flex-cell'>
            <img src={url} className='avatar avatar-large avatar-rounded' />
           <h3>Welcome, here you can build questionnaires!</h3>
-            <p>This construction tool can be used to create a questionnaire
-              survey for publication and completion on mobile
-              devices&#8212;particularly tablets. To get started please use the
+      <p>This was my <em>MSc Computing Science 2015</em> dissertation project. The
+      application is functional, but only partially complete&#8212;perhaps I'll
+      return to it one day...</p>
+            <p>This construction tool can be used to create a simple multiple 
+      choice questionnaire
+              survey ready for publication and completion on mobile
+              devices, particularly tablets. To get started please use the
               links below.</p>
           <a className='link' onClick={this.onNewSurveyClick}>
             Create New Survey
